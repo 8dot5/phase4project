@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "🗑️ Deleting previous data..."
+Constellation.destroy_all
+Star.destroy_all
+User.destroy_all
+
+puts "🪐 ✨ Creating Constellations..."
+Constellation.create()
+
+puts "⭐ ✨ Creating Stars..."
+Star.create()
+
+puts "👤 Creating Users..."
+User.create()
+
+puts "✅ Done seeding!"
