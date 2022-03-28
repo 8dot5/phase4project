@@ -7,7 +7,8 @@ function Constellation () {
     let { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/constellations/${id}`)
+        fetch(`/constellations/${id}`)
+        // fetch(`http://localhost:3000/constellations/${id}`)
           .then((r) => r.json())
           .then(setConstellation)
     }, []);
@@ -18,9 +19,9 @@ function Constellation () {
         <>
         <p>test</p>
         </>
-        
+
     )
-    
+
 }
 
 export default Constellation;

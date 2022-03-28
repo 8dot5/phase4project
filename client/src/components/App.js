@@ -12,7 +12,8 @@ function App() {
   // let { id } = useParams();
 
 	useEffect(() => {
-		fetch("http://localhost:3000/constellations")
+		fetch("/constellations")
+    // fetch("http://localhost:3000/constellations")
 			.then((r) => r.json())
 			.then((c) => setConstellations(c));
 	}, []);
