@@ -18,6 +18,9 @@ function Home() {
 			  <Link to={`/constellations/${constellation.id}`}>{constellation.name}</Link>
 			</h2>
 			<p>{constellation.name}</p>
+			<p>{constellation.abbreviation}</p>
+			<img src={constellation.image_url}></img>
+
 
 		  </div>
 		))}
