@@ -14,7 +14,7 @@ function Home({ constellations }) {
 					constellations.map((constellation) => (
 						<div key={constellation.id} className="card">
 							<h2>
-							  <Link to={`/constellation/${constellation.id}`}>{constellation.name}</Link>
+							  <Link to={`https://constellation-lookup.herokuapp.com/constellation/${constellation.id}`}>{constellation.name}</Link>
 							</h2>
 							<p>{constellation.name}</p>
 							<p>{constellation.abbreviation}</p>
