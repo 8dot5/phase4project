@@ -5,7 +5,7 @@ function Home() {
 	const [constellations, setConstellations] = useState([])
 
 	useEffect(() => {
-		fetch("/constellations")
+		fetch("http://localhost:3000/constellations")
 			.then((r) => r.json())
 			.then(setConstellations);
 	}, []);
@@ -15,13 +15,11 @@ function Home() {
 		{constellations.map((constellation) => (
 		  <div key={constellation.id} className="card">
 			<h2>
-			  <Link to={`/constellations/${constellation.id}`}>{constellation.name}</Link>
+			  <Link to={`/constellation/${constellation.id}`}>{constellation.name}</Link>
 			</h2>
 			<p>{constellation.name}</p>
 			<p>{constellation.abbreviation}</p>
-			<img src={constellation.image_url}></img>
-
-
+			<img alt="constellation_image" src={constellation.image_url}></img>
 		  </div>
 		))}
 	  </section>

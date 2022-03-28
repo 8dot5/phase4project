@@ -1,7 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import Home from "./Home";
-import Constellations from "./Constellations";
-import Stars from "./Stars";
+import Constellation from "./Constellation";
+import Star from "./Star";
 
 
 
@@ -9,11 +9,11 @@ function App() {
   return (
     <>
       <Switch>
-        <Route exact path="/constellations/:id">
-          <Constellations />
+        <Route exact path="/constellation/:id">
+          <Constellation />
         </Route>
-        <Route exact path="/stars/:id">
-          <Stars />
+        <Route exact path="/star/:id">
+          <Star />
         </Route>
         <Route exact path="/">
           <Home />
