@@ -1,4 +1,5 @@
 class User < ApplicationRecord
     validates :username, uniqueness: true
-    # validates :password, 
+    # TODO: add validations 
+    # validates :password
 end

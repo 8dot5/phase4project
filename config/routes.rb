@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :users
+  resources :users, except: [:update, :index]
   resources :stars
   resources :constellations, except: [:create, :destroy]
   # Routing logic: fallback requests for React Router.
