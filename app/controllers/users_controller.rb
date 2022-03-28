@@ -7,11 +7,19 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find(session[:user_id])
-        render json: user, status: :ok
+        render json: find_user, status: :ok
+    end
+
+    def destroy
+        find_user.destroy!
+        render json: {}, status: :gone
     end
 
     private
+
+    def find_user
+        User.find(params[:id])
+    end
 
     def user_params
         params.permit(:username, :password, :confirm_password)
