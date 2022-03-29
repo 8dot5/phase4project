@@ -1,36 +1,42 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"
+
 
 function Constellation ({ constellations }) {
-
+    const [constellation, setConstellation] = useState({});
     let { id } = useParams();
 
-    let c = constellations.find(constellation => constellation.id == id);
-    console.log(c)
-    // useEffect(() => {
-    //     setConstellation(constellations.find(constellation => constellation.id == id))
-    // }, [id])
+    useEffect(() => {
+        fetch(`http://localhost:3000/constellations/${id}`)
+        .then(r => r.json())
+        .then(data => setConstellation(data))
+
+        // localStorage.setItem('constellation', JSON.stringify(constellation))
+
+    }, [])
     // TODO: add edit button for authenticated users
     // TODO: add star(s) belonging to this constellation
 
-
+    // function useSetConstellation() {
+    //     setConstellation(constellations.find(c => c.id == id))
+    // }
 
     return (
         <div className="constellation-details">
-            <h1>{c.name}</h1>
-            <img src={c.image_url}/>
-            <ul>Meaning: <em>{c.meaning}</em></ul>
-            <ul>Abbreviation: <em>{c.meaning}</em></ul>
-            <ul>Right Ascension (hours & minutes): {c.right_ascension_hrs_mins}</ul>
-            <ul>Declination (degrees & minutes): {c.declination_degs_mins}</ul>
-            <ul>Area (in square degrees): {c.area_sq_deg}</ul>
-            <ul>Percentage of Sky Area: {c.percentage_of_sky_area}</ul>
-            <ul>Quadrant: {c.quadrant}</ul>
-            <ul>Number of primary stars: {c.main_stars}</ul>
-            <ul>Origin: {c.origin}</ul>
+
+            <h1>{constellation.name}</h1>
+            <img src={constellation.image_url}/>
+            <ul>Meaning: <em>{constellation.meaning}</em></ul>
+            <ul>Abbreviation: <em>{constellation.abbreviation}</em></ul>
+            <ul>Right Ascension (hours & minutes): {constellation.right_ascension_hrs_mins}</ul>
+            <ul>Declination (degrees & minutes): {constellation.declination_degs_mins}</ul>
+            <ul>Area (in square degrees): {constellation.area_sq_deg}</ul>
+            <ul>Percentage of Sky Area: {constellation.percentage_of_sky_area}</ul>
+            <ul>Quadrant: {constellation.quadrant}</ul>
+            <ul>Number of primary stars: {constellation.main_stars}</ul>
+            <ul>Origin: {constellation.origin}</ul>
         </div>
     )
-
 }
 
 export default Constellation;
