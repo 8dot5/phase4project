@@ -4,12 +4,14 @@ import Home from "./Home";
 import Login from './Login';
 import Constellation from "./Constellation";
 import Star from "./Star";
-import CrudStar from "./CrudStar";
+import StarCreate from "./StarCreate";
+import StarUpdate from './StarUpdate';
 
 
 
 function App() {
 	const [constellations, setConstellations] = useState([]);
+  const [stars, setStars] = useState([]);
   // let { id } = useParams();
 
 	useEffect(() => {
@@ -19,21 +21,26 @@ function App() {
 			.then((c) => setConstellations(c));
 	}, []);
 
+  // TODO review handleAddStar function..
   function handleAddStar(){
     fetch("http://localhost:3000/constellations/:id/stars")
       .then((r) => r.json())
-      .then((c) => setConstellations(c.reverse()));
+      .then((s) => setStars(s.reverse()));
+  }
+
+  function handleUpdateStar() {
+
   }
 
   return (
     <>
     <Login />
       <Switch>
-        <Route exact path="/constellations/:id/stars/:id">
-          <Star />
-        </Route>
         <Route path="/constellations/:id/stars">
-          <CrudStar constellations={constellations} handleAddStar={handleAddStar} />
+          <StarCreate constellations={constellations} handleAddStar={handleAddStar} />
+        </Route>
+        <Route path="/constellations/:id/stars/:id">
+          <StarUpdate constellations={constellations} handleUpdateStar={handleUpdateStar} />
         </Route>
         <Route exact path="/constellations/:id">
           <Constellation constellations={constellations} />

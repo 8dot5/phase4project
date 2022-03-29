@@ -18,9 +18,20 @@ function Constellation () {
     // show stars where star.constellation_id == id 
     let starList = (constellation.stars || []).map(star => {
         return (
-        <div key={star.name}>
-            <ul>{star.name}</ul>
-            <ul>{star.id}</ul>
+        <div className="star-details" key={star.name}>
+            <h3><b>{star.name}</b></h3>
+            <img src={star.image_url ? star.image_url : 'https://upload.wikimedia.org/wikipedia/commons/5/57/Betelgeuse_captured_by_ALMA.jpg'} 
+            height="300"
+            width="300">
+            </img>
+            <br></br>
+            <ul><em>Apparent Magnitude:</em> {star.apparent_magnitude}</ul>
+            <button onClick={(e) => {
+                e.preventDefault();
+                window.location.href=`http://localhost:4000/constellations/${id}/stars/${star.id}`;
+                }}>
+                    Edit star info
+            </button>
         </div>
         
         )

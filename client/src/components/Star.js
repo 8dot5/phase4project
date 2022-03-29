@@ -1,4 +1,3 @@
-import CrudStar from "./CrudStar";
 
 function Star () {
 
