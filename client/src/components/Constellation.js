@@ -1,21 +1,26 @@
- import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-// import Star from "./Star";
-
 
 function Constellation () {
     const [constellation, setConstellation] = useState({});
+    const [stars, setStars] = useState({});
+
     let { id } = useParams();
 
     useEffect(() => {
         fetch(`http://localhost:3000/constellations/${id}`)
         .then(r => r.json())
         .then(data => setConstellation(data))
-    }, [id])
+        .then(constellation.stars = setStars(constellation.stars))
+    }, [id, stars])
 
-    // TODO: add edit button for authenticated users
-    // TODO: add star(s) belonging to this constellation; 
-    // show stars where star.constellation_id == id 
+    function handleDelete(starId){
+        setStars(constellation.stars.filter(star => star.id !== starId));
+        fetch(`http://localhost:3000/stars/${starId}`, {
+          method: 'DELETE',
+      })
+    }
+
     let starList = (constellation.stars || []).map(star => {
         return (
         <div className="star-details" key={star.name}>
@@ -33,8 +38,14 @@ function Constellation () {
                 }}>
                     Edit star info
             </button>
+            <button onClick={(e) => {
+                e.preventDefault();
+                handleDelete(star.id);
+                }}>
+                    Delete star
+            </button>
         </div>
-        
+
         )
     })
     return (
