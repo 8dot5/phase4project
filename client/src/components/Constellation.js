@@ -10,7 +10,7 @@ function Constellation () {
         fetch(`http://localhost:3000/constellations/${id}`)
         .then(r => r.json())
         .then(data => setConstellation(data))
-    }, [])
+    }, [id])
 
     // TODO: add edit button for authenticated users
     // TODO: add star(s) belonging to this constellation
@@ -19,7 +19,7 @@ function Constellation () {
         <div className="constellation-details">
 
             <h1>{constellation.name}</h1>
-            <img src={constellation.image_url}/>
+            <img alt="constellation_image" src={constellation.image_url}/>
             <ul>Meaning: <em>{constellation.meaning}</em></ul>
             <ul>Abbreviation: <em>{constellation.abbreviation}</em></ul>
             <ul>Right Ascension (hours & minutes): {constellation.right_ascension_hrs_mins}</ul>

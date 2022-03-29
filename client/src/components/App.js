@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react';
-import { Switch, Route, useParams } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import Login from './Login';
 import Constellation from "./Constellation";
@@ -23,11 +23,11 @@ function App() {
     <>
     <Login />
       <Switch>
-        <Route exact path="/stars/:id">
+        <Route exact path="/constellations/:id/stars/:id">
           <Star />
         </Route>
-        <Route path="/stars">
-          <CrudStar />
+        <Route path="/constellations/:id/stars">
+          <CrudStar constellations={constellations}/>
         </Route>
         <Route exact path="/constellations/:id">
           <Constellation constellations={constellations} />
