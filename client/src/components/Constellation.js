@@ -26,6 +26,7 @@ function Constellation () {
             </img>
             <br></br>
             <ul><em>Apparent Magnitude:</em> {star.apparent_magnitude}</ul>
+            {/* TODO: edit button should only render if user is authenticated */}
             <button onClick={(e) => {
                 e.preventDefault();
                 window.location.href=`http://localhost:4000/constellations/${id}/stars/${star.id}`;

@@ -36,7 +36,7 @@ function App() {
     <>
     <Login />
       <Switch>
-        <Route path="/constellations/:id/stars">
+        <Route exact path="/constellations/:id/stars">
           <StarCreate constellations={constellations} handleAddStar={handleAddStar} />
         </Route>
         <Route path="/constellations/:id/stars/:id">
