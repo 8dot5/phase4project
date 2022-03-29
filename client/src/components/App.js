@@ -4,6 +4,7 @@ import Home from "./Home";
 import Login from './Login';
 import Constellation from "./Constellation";
 import Star from "./Star";
+import CrudStar from "./CrudStar";
 
 
 
@@ -22,11 +23,14 @@ function App() {
     <>
     <Login />
       <Switch>
+        <Route exact path="/stars/:id">
+          <Star />
+        </Route>
+        <Route path="/stars">
+          <CrudStar />
+        </Route>
         <Route exact path="/constellations/:id">
           <Constellation constellations={constellations} />
-        </Route>
-        <Route exact path="/star/:id">
-          <Star />
         </Route>
         <Route exact path="/">
           <Home constellations={constellations} />

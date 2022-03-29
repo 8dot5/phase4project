@@ -11,12 +11,9 @@ function Constellation () {
         .then(r => r.json())
         .then(data => setConstellation(data))
     }, [])
+
     // TODO: add edit button for authenticated users
     // TODO: add star(s) belonging to this constellation
-
-    // function useSetConstellation() {
-    //     setConstellation(constellations.find(c => c.id == id))
-    // }
 
     return (
         <div className="constellation-details">
