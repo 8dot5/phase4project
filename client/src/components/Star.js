@@ -1,4 +1,4 @@
-import AddStar from "./CrudStar";
+import CrudStar from "./CrudStar";
 
 function Star () {
 

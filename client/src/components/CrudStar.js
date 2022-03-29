@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom"
 
 
-function CrudStar( {constellations}) {
+function CrudStar( {constellations, handleAddStar}) {
     // TODO: fix persistence of constellation ID
     const [name, setName] = useState('');
     const [constellation, setConstellation] = useState('');
@@ -70,9 +70,9 @@ function CrudStar( {constellations}) {
                 .then(res => res.json())
                 .then(newItem => {
             })
-            // handleAddStar()
+            handleAddStar()
             alert("Submitted!");
-        
+
             setName('');
             setConstellation('');
             setBrightstar('');
@@ -84,7 +84,6 @@ function CrudStar( {constellations}) {
             setRadiusKm('');
             setImageUrl('');
             setDistanceFromSun('');
-        
         }
 
         console.log(constellation)

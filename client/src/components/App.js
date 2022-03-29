@@ -19,6 +19,12 @@ function App() {
 			.then((c) => setConstellations(c));
 	}, []);
 
+  function handleAddStar(){
+    fetch("http://localhost:3000/constellations/:id/stars")
+      .then((r) => r.json())
+      .then((c) => setConstellations(c.reverse()));
+  }
+
   return (
     <>
     <Login />
@@ -27,7 +33,7 @@ function App() {
           <Star />
         </Route>
         <Route path="/constellations/:id/stars">
-          <CrudStar constellations={constellations}/>
+          <CrudStar constellations={constellations} handleAddStar={handleAddStar} />
         </Route>
         <Route exact path="/constellations/:id">
           <Constellation constellations={constellations} />
