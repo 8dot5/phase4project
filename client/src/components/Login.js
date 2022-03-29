@@ -12,7 +12,8 @@ function Login() {
 		const formData = { username, password}
 
 		{/* Controlled form input validation! */}
-		fetch("http://localhost:3000/users", {
+		fetch("http://localhost:3000/login", {
+		// fetch("https://constellation-lookup.herokuapp.com/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
@@ -47,12 +48,12 @@ function Login() {
 				/>
 
 				<button className="card_button" type="submit">Submit</button>
-			
-			</form> 
-			
+
+			</form>
+
 		</div>
 
-	)    
+	)
     return (
         <div className="login">
             {form}

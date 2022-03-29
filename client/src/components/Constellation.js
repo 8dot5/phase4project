@@ -7,7 +7,8 @@ function Constellation () {
     let { id } = useParams();
 
     useEffect(() => {
-        fetch(`https://constellation-lookup.herokuapp.com/${id}`)
+        fetch(`http://localhost:3000/constellation/${id}`)
+        // fetch(`https://constellation-lookup.herokuapp.com/constellation/${id}`)
           .then((r) => r.json())
           .then(setConstellation)
     }, []);
