@@ -52,6 +52,12 @@ function Constellation () {
             <ul>Number of primary stars: {constellation.main_stars}</ul>
             <ul>Origin: {constellation.origin}</ul>
             <h2>Stars:</h2>
+            <button onClick={(e) => {
+                e.preventDefault();
+                window.location.href=`http://localhost:4000/constellations/${id}/stars`;
+                }}>
+                    Add a star to {constellation.name}
+            </button>
             {starList}
         </div>
     )
