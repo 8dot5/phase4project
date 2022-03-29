@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 
 
-function Constellation ({ constellations }) {
+function Constellation () {
     const [constellation, setConstellation] = useState({});
     let { id } = useParams();
 
@@ -10,9 +10,6 @@ function Constellation ({ constellations }) {
         fetch(`http://localhost:3000/constellations/${id}`)
         .then(r => r.json())
         .then(data => setConstellation(data))
-
-        // localStorage.setItem('constellation', JSON.stringify(constellation))
-
     }, [])
     // TODO: add edit button for authenticated users
     // TODO: add star(s) belonging to this constellation
