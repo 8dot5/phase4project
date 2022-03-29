@@ -25,10 +25,12 @@ function App() {
   function handleAddStar(){
     fetch("http://localhost:3000/constellations/:id/stars")
       .then((r) => r.json())
-      .then((s) => setStars(s.reverse()));
+      .then((s) => setStars(s));
   }
 
   function handleUpdateStar() {
+    fetch('http://localhost:3000/stars/:id')
+    
 
   }
 

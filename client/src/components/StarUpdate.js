@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom"
 
-
 function StarUpdate( {constellations, handleUpdateStar}) {
     // TODO: fix persistence of constellation ID
     const [name, setName] = useState('');
     const [star, setStar] = useState('');
-    // const [constellationId, setConstellationId] = useState('');
     const [brightStar, setBrightstar] = useState(false);
     const [rightAscension, setRightAscension] = useState('');
     const [declination, setDeclination] = useState('');
@@ -39,35 +37,18 @@ function StarUpdate( {constellations, handleUpdateStar}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        // switch (true) {
-            // case (formData.name.length < 1):
-            //     alert("Please enter the star name.");
-            //     break;
-            // case (!formData.architect_id || formData.architect_id === "select"):
-            //     alert("Please select an architect.");
-            //     break;
-            // case (!formData.city_id || formData.city_id === "select"):
-            //     alert("Please select the city.");
-            //     break;
-            // case (formData.opened.length < 1):
-            //     alert("Please enter the building's date of completion.");
-            //     break;
-            // case (formData.description.length < 1):
-            //     alert("Please enter a description.");
-            //     break;
-            // default:
-        fetch("http://localhost:3000/stars", {
-            method: "POST",
+        fetch(`http://localhost:3000/stars/${id}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(formData)
             })
                 .then(res => res.json())
-                .then(newItem => {
+                .then(updatedStar => {
             })
             handleUpdateStar()
-            alert("Submitted!");
+            alert("Updated!");
 
             setName('');
             setStar('');
@@ -82,16 +63,11 @@ function StarUpdate( {constellations, handleUpdateStar}) {
             setDistanceFromSun('');
         }
 
-        console.log(star)
-
     let form = (
         <div className='form-container'>
             <form className="star-form">
                 <label>Edit the information for {star.name}</label>
                 <br></br>
-                    {/* <select name="constellations" className="constellations-dropdown" value={constellationId} onChange={(e) => setConstellationId(e.target.value)}>
-                       {dropdownItems}
-                    </select> */}
                 <br></br>
                 
             </form>
@@ -163,7 +139,7 @@ function StarUpdate( {constellations, handleUpdateStar}) {
                     className="name"
                     type="text"
                     id="image"
-                    value={imageUrl}
+                    value={age}
                     placeholder={star.age}
                     onChange={e => setAge(e.target.value)}
                 />
@@ -181,7 +157,7 @@ function StarUpdate( {constellations, handleUpdateStar}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Radius (km)</label>
+                <label htmlFor='Form'>Radius (km):</label>
                 <br></br>
                 <input
                     className="name"
@@ -193,7 +169,7 @@ function StarUpdate( {constellations, handleUpdateStar}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Distance from the Sun</label>
+                <label htmlFor='Form'>Distance from the Sun:</label>
                 <br></br>
                 <input
                     className="name"
@@ -204,7 +180,7 @@ function StarUpdate( {constellations, handleUpdateStar}) {
                     onChange={e => setDistanceFromSun(e.target.value)}
                 />
                 <br></br>
-                <input className="button-35" type="submit"></input>
+                <input className="star_submit_button" type="submit" value="Submit"></input>
             </form>
         </div>
     )
