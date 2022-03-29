@@ -15,7 +15,7 @@ function Home({ constellations }) {
 			<div key={constellation.id} className="card">
 				<h2>
 					{/* <Link to={`https://constellation-lookup.herokuapp.com/constellation/${constellation.id}`}>{constellation.name}</Link> */}
-					<Link to={`/constellation/${constellation.id}`}>{constellation.name}</Link>
+					<Link to={`/constellations/${constellation.id}`}>{constellation.name}</Link>
 				</h2>
 				<p>{constellation.name}</p>
 				<p>{constellation.abbreviation}</p>
