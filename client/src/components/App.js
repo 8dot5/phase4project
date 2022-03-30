@@ -5,7 +5,7 @@ import Login from './Login';
 import Constellation from "./Constellation";
 import StarCreate from "./StarCreate";
 import StarUpdate from './StarUpdate';
-
+import NavBar from './NavBar';
 
 
 function App() {
