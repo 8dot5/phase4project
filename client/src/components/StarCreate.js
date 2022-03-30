@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 
 
-function StarCreate( {constellations, handleAddUpdateStar}) {
-    // TODO: fix persistence of constellation ID
+function StarCreate( {constellations}) {
+    // TODO: fix persistence of constellation ID - I THINK WE CAN DELETE THIS?
+    let history = useHistory();
+    let { id } = useParams();
+    
     const [name, setName] = useState('');
     const [constellation, setConstellation] = useState('');
     // const [constellationId, setConstellationId] = useState('');
@@ -16,7 +19,6 @@ function StarCreate( {constellations, handleAddUpdateStar}) {
     const [radiusKm, setRadiusKm] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [distanceFromSun, setDistanceFromSun] = useState('');
-    let { id } = useParams();
 
     useEffect(() => {
         fetch(`http://localhost:3000/constellations/${id}`)
@@ -69,10 +71,10 @@ function StarCreate( {constellations, handleAddUpdateStar}) {
             })
                 .then(res => res.json())
                 .then(star => {
-                    handleAddUpdateStar(star)
+                //     handleAddUpdateStar(star)
             })
-            alert("Submitted!");
-
+            // alert("Submitted!");
+            history.push(`/constellations/${id}`)
             setName('');
             setConstellation('');
             setBrightstar('');
@@ -85,8 +87,6 @@ function StarCreate( {constellations, handleAddUpdateStar}) {
             setImageUrl('');
             setDistanceFromSun('');
         }
-
-        console.log(constellation)
 
     // let constellation = constellations.find(c => c.id == id)
     let form = (

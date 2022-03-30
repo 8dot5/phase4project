@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 
-function StarUpdate( {constellations, handleAddUpdateStar}) {
+function StarUpdate( {constellations, handleStarUpdate}) {
     // TODO: fix persistence of constellation ID
-    const [name, setName] = useState('');
     const [star, setStar] = useState('');
+    const [name, setName] = useState('');
     const [brightStar, setBrightstar] = useState(false);
     const [rightAscension, setRightAscension] = useState('');
     const [declination, setDeclination] = useState('');
@@ -14,13 +14,25 @@ function StarUpdate( {constellations, handleAddUpdateStar}) {
     const [radiusKm, setRadiusKm] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [distanceFromSun, setDistanceFromSun] = useState('');
-    let { id } = useParams();
+    let { id, star_id } = useParams();
+    let history = useHistory();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/stars/${id}`)
+        fetch(`http://localhost:3000/stars/${star_id}`)
         .then(r => r.json())
         .then(data => setStar(data))
-    }, [id])
+        .then((data) => {
+       console.log(data)
+            // setName(data.name)
+            // setRightAscension(star.right_ascension_hrs_mins)
+            // setDeclination(star.declination_degs_mins)
+            // setApparentMagnitude(star.apparent_magnitude)
+            // setAge(star.age)
+            // setMassKg(star.mass_kg)
+            setRadiusKm(star.radius_km)
+            setImageUrl(star.image_url)
+        })
+    }, [star_id])
 
     let formData = {
         "name": name,
@@ -37,7 +49,7 @@ function StarUpdate( {constellations, handleAddUpdateStar}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch(`http://localhost:3000/stars/${id}`, {
+        fetch(`http://localhost:3000/stars/${star_id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -46,10 +58,10 @@ function StarUpdate( {constellations, handleAddUpdateStar}) {
             })
                 .then(res => res.json())
                 .then(star => {
-                    handleAddUpdateStar(star)
+                    handleStarUpdate(star);
             })
-            alert("Updated!");
-
+            // alert("Updated!");
+            history.push(`/constellations/${id}`)
             setName('');
             setStar('');
             setBrightstar('');
@@ -97,19 +109,19 @@ function StarUpdate( {constellations, handleAddUpdateStar}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Right ascension (hours & minutes):</label>
+                <label htmlFor='Form'>Right ascension (hours, minutes, seconds):</label>
                 <br></br>
                 <input
                     className="name"
                     type="text"
                     id="image"
-                    value={imageUrl}
+                    value={rightAscension}
                     placeholder={star.right_ascension_hrs_mins}
                     onChange={e => setRightAscension(e.target.value)}
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Declination (degrees & minutes):</label>
+                <label htmlFor='Form'>Declination (degrees, minutes, seconds):</label>
                 <br></br>
                 <input
                     className="name"

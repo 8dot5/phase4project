@@ -18,21 +18,20 @@ function App() {
 			.then((c) => setConstellations(c));
 	}, []);
 
-  function handleAddUpdateStar(star){
-    console.log(star)
-    const updatedList = [star, ...constellations]
-    setConstellations(updatedList)
-  }
+  function handleStarUpdate(star){
+    let constellation = constellations.find(constellation => constellation.id == star.constellation.id)
+    constellation.stars = [star, ...constellation.stars]
+}
 
   return (
     <>
     <Login />
       <Switch>
         <Route exact path="/constellations/:id/stars">
-          <StarCreate constellations={constellations} handleAddUpdateStar={handleAddUpdateStar} />
+          <StarCreate constellations={constellations} />
         </Route>
-        <Route exact path="/constellations/:id/stars/:id">
-          <StarUpdate constellations={constellations} handleAddUpdateStar={handleAddUpdateStar} />
+        <Route exact path="/constellations/:id/stars/:star_id">
+          <StarUpdate constellations={constellations} handleStarUpdate={handleStarUpdate} />
         </Route>
         <Route exact path="/constellations/:id">
           <Constellation constellations={constellations} />

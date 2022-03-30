@@ -55,6 +55,7 @@ function Constellation () {
             <h1>{constellation.name}</h1>
             <img alt="constellation_image" src={constellation.image_url}/>
             <ul>Meaning: <em>{constellation.meaning}</em></ul>
+            <ul>Origin: {constellation.origin}</ul>
             <ul>Abbreviation: <em>{constellation.abbreviation}</em></ul>
             <ul>Right Ascension (hours & minutes): {constellation.right_ascension_hrs_mins}</ul>
             <ul>Declination (degrees & minutes): {constellation.declination_degs_mins}</ul>
@@ -62,7 +63,6 @@ function Constellation () {
             <ul>Percentage of Sky Area: {constellation.percentage_of_sky_area}</ul>
             <ul>Quadrant: {constellation.quadrant}</ul>
             <ul>Number of primary stars: {constellation.main_stars}</ul>
-            <ul>Origin: {constellation.origin}</ul>
             <h2>Stars:</h2>
             <button onClick={(e) => {
                 e.preventDefault();
