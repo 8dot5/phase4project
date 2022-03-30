@@ -23,14 +23,14 @@ function StarCreate( {constellations, handleAddStar}) {
         .then(r => r.json())
         .then(data => setConstellation(data))
     }, [id])
-    
+
     let formData = {
         "name": name,
         "constellation_id": constellation.id,
-        "bright_star": brightStar, 
+        "bright_star": brightStar,
         "right_ascension_hrs_mins": rightAscension,
         "declination_degs_mins": declination,
-        "apparent_magnitude": apparentMagnitude, 
+        "apparent_magnitude": apparentMagnitude,
         "age": age,
         "mass_kg": massKg,
         "radius_km": radiusKm,
@@ -68,9 +68,9 @@ function StarCreate( {constellations, handleAddStar}) {
             body: JSON.stringify(formData)
             })
                 .then(res => res.json())
-                .then(newItem => {
+                .then(newStar => {
+                    handleAddStar(newStar)
             })
-            handleAddStar()
             alert("Submitted!");
 
             setName('');
@@ -98,7 +98,7 @@ function StarCreate( {constellations, handleAddStar}) {
                        {dropdownItems}
                     </select> */}
                 <br></br>
-                
+
             </form>
             <form className='form' onSubmit={handleSubmit}>
                 <label htmlFor='Form'>Star Name:</label>
@@ -122,7 +122,7 @@ function StarCreate( {constellations, handleAddStar}) {
                     placeholder="Year..."
                     onChange={e => setOpened(e.target.value)}
                 /> */}
-                
+
                 <br></br>
                 <label htmlFor='Form'>Image:</label>
                 <br></br>

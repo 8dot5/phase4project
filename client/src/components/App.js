@@ -21,11 +21,10 @@ function App() {
 			.then((c) => setConstellations(c));
 	}, []);
 
-  // TODO review handleAddStar function..
-  function handleAddStar(){
-    fetch("http://localhost:3000/constellations/:id/stars")
-      .then((r) => r.json())
-      .then((s) => setStars(s));
+  function handleAddStar(newStar){
+    console.log(newStar)
+    const updatedList = [newStar, ...constellations]
+    setConstellations(updatedList)
   }
 
   function handleUpdateStar() {
