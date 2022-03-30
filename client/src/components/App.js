@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import Login from './Login';
 import Constellation from "./Constellation";
@@ -23,7 +23,7 @@ function App() {
 
   // TODO review handleAddStar function..
   function handleAddStar(){
-    fetch("http://localhost:3000/constellations/:id/stars") 
+    fetch("http://localhost:3000/constellations/:id/stars")
       .then((r) => r.json())
       .then((s) => setStars(s));
   }
@@ -41,7 +41,7 @@ function App() {
         <Route exact path="/constellations/:id/stars">
           <StarCreate constellations={constellations} handleAddStar={handleAddStar} />
         </Route>
-        <Route path="/constellations/:id/stars/:id">
+        <Route exact path="/constellations/:id/stars/:id">
           <StarUpdate constellations={constellations} handleUpdateStar={handleUpdateStar} />
         </Route>
         <Route exact path="/constellations/:id">
@@ -49,6 +49,10 @@ function App() {
         </Route>
         <Route exact path="/">
           <Home constellations={constellations} />
+        </Route>
+        <Route path="*">
+          <h1>404 not found</h1>
+          <Link to="/">Go home</Link>
         </Route>
       </Switch>
     </>
