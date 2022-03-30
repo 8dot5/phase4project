@@ -48,12 +48,13 @@ function App() {
   }
 
   // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
-  if (!isAuthenticated) return <Auth />;
+  // if (!isAuthenticated) return <Auth />;
 
 
   return (
     <>
     <NavBar setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} />
+    <Login />
       <Switch>
         <Route exact path="/constellations/:id/stars">
           <StarCreate constellations={constellations} />
@@ -68,7 +69,7 @@ function App() {
           <Home constellations={constellations} />
         </Route>
         <Route path="/sign_up">
-          <Auth />
+          <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
         </Route>
         <Route path="/login">
           <Login />

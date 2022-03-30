@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Auth() {
+function Auth({ setUser, setIsAuthenticated }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -23,6 +23,23 @@ function Auth() {
             console.log(json)
             if(json.errors) setErrors(Object.entries(json.errors))
         })
+        // .then(fetch("http://localhost:3000/login"),{
+        //   method:'POST',
+        //   headers:{'Content-Type': 'application/json'},
+        //   body:JSON.stringify(user)
+        // })
+        // .then(res => {
+        //   if(res.ok){
+        //     res.json()
+        //     .then(user=>{
+        //       setUser(user)
+        //       setIsAuthenticated(true)
+        //     })
+        //   } else {
+        //     res.json()
+        //     .then(json => setErrors(json.error))
+        //   }
+        // })
     }
     return (
         <>
