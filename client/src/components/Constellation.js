@@ -8,7 +8,7 @@ function Constellation () {
     let { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/constellations/${id}`)
+        fetch(`/constellations/${id}`)
         .then(r => r.json())
         .then(data => setConstellation(data))
         .then(constellation.stars = setStars(constellation.stars))
@@ -16,7 +16,7 @@ function Constellation () {
 
     function handleDelete(starId){
         setStars(constellation.stars.filter(star => star.id !== starId));
-        fetch(`http://localhost:3000/stars/${starId}`, {
+        fetch(`/stars/${starId}`, {
           method: 'DELETE',
       })
     }

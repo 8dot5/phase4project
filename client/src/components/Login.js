@@ -14,23 +14,22 @@ function Login({setUser, setIsAuthenticated}) {
         console.log(username, 'this is name')
         console.log(password, 'this is password')
 
-		const formData = { username, password }
+		const user = { username: username, password }
 
 		{/* Controlled form input validation! */}
-		fetch("http://localhost:3000/login", {
-		// fetch("https://constellation-lookup.herokuapp.com/login", {
+		fetch("/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
 		},
-		body: JSON.stringify(formData)
+		body: JSON.stringify(user)
 		}).then((r) => {
 			if (r.ok) {
 			  r.json()
 			  .then((user) => {
 				  setUser(user)
-				//   setIsAuthenticated(true)
-				  console.log(user)
+				  setIsAuthenticated(true)
+				  console.log("!!!!", user)
 				  history.push('/')
 				});
 			}

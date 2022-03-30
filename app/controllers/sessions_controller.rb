@@ -1,7 +1,8 @@
 require 'byebug'
 class SessionsController < ApplicationController
-    skip_before_action :authorized_user, only: [:login]
+    # skip_before_action :authorized_user, only: [:login]
 
+    # THIS IS WORKING!
     def login
         user = User.find_by(username:params[:username])
         if user&.authenticate(params[:password])

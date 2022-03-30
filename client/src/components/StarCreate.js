@@ -21,7 +21,7 @@ function StarCreate( {constellations}) {
     const [distanceFromSun, setDistanceFromSun] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:3000/constellations/${id}`)
+        fetch(`/constellations/${id}`)
         .then(r => r.json())
         .then(data => setConstellation(data))
     }, [id])
@@ -62,7 +62,7 @@ function StarCreate( {constellations}) {
             //     alert("Please enter a description.");
             //     break;
             // default:
-        fetch("http://localhost:3000/stars", {
+        fetch("/stars", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

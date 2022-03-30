@@ -17,8 +17,6 @@ function NavBar({ setUser, setIsAuthenticated, user }) {
       <span className="logo">{""}</span>
       <button onClick={logout}>Logout</button>
       <NavLink exact to="/">Home</NavLink>
-      <NavLink to="/star">Stars</NavLink>
-
     </nav>
   )
 }

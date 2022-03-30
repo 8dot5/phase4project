@@ -13,7 +13,7 @@ function Auth({ setUser, setIsAuthenticated }) {
             password
         }
 
-        fetch("http://localhost:3000/users",{
+        fetch("/users",{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body:JSON.stringify(user)
@@ -23,23 +23,6 @@ function Auth({ setUser, setIsAuthenticated }) {
             console.log(json)
             if(json.errors) setErrors(Object.entries(json.errors))
         })
-        // .then(fetch("http://localhost:3000/login"),{
-        //   method:'POST',
-        //   headers:{'Content-Type': 'application/json'},
-        //   body:JSON.stringify(user)
-        // })
-        // .then(res => {
-        //   if(res.ok){
-        //     res.json()
-        //     .then(user=>{
-        //       setUser(user)
-        //       setIsAuthenticated(true)
-        //     })
-        //   } else {
-        //     res.json()
-        //     .then(json => setErrors(json.error))
-        //   }
-        // })
     }
     return (
         <>
