@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-    validates :username, uniqueness: true
-    # TODO: add validations 
+    has_secure_password
+    
+    # validates :username, uniqueness: true
+    # TODO: add validations
     # validates :password
 end

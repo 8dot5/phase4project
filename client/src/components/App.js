@@ -1,31 +1,66 @@
 import { React, useEffect, useState } from 'react';
 import { Switch, Route, Link } from "react-router-dom";
 import Home from "./Home";
-import Login from './Login';
 import Constellation from "./Constellation";
 import StarCreate from "./StarCreate";
 import StarUpdate from './StarUpdate';
 import NavBar from './NavBar';
 
+import Login from './Login';
+import Auth from "./Auth";
+
 
 function App() {
 	const [constellations, setConstellations] = useState([]);
+  const [errors, setErrors] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/authorized_user")
+    .then((res) => {
+      if(res.ok) {
+        res.json()
+        .then((user) => {
+          setIsAuthenticated(true);
+          setUser(user);
+          console.log("logged in as ", user)
+        })
+        // .then(()=> {
+        //   fetch("/constellations")
+        //   .then(res => res.json())
+        //   .then(c => setConstellations(c))
+        //   });
+        }
+        else
+          console.log(res)
+      })
+  },[]);
+
 
 	useEffect(() => {
-    fetch("http://localhost:3000/constellations")
-    // fetch("https://constellation-lookup.herokuapp.com/constellations")
-			.then((r) => r.json())
-			.then((c) => setConstellations(c));
+		if (user && constellations.length === 0){
+			fetch("/constellations")
+				.then((r) => r.json())
+				.then((c) => setConstellations(c));}
 	}, []);
 
   function handleStarUpdate(star){
-    let constellation = constellations.find(constellation => constellation.id == star.constellation.id)
-    constellation.stars = [star, ...constellation.stars]
-}
+    if (constellations.length > 0) {
+    let constellation = (constellations || []).find(constellation => constellation.id == star.constellation.id)
+    console.log(constellation)
+    console.log(constellations)
+    constellation.stars = [star, ...constellation.stars]}
+  }
+
+  // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
+  // if (!isAuthenticated) return <Auth />;
+
 
   return (
     <>
-    <Login />
+    <NavBar setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} />
+    {/* <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser}/> */}
       <Switch>
         <Route exact path="/constellations/:id/stars">
           <StarCreate constellations={constellations} />
@@ -37,7 +72,13 @@ function App() {
           <Constellation constellations={constellations} />
         </Route>
         <Route exact path="/">
-          <Home constellations={constellations} />
+          <Home constellations={constellations} setConstellations={setConstellations} user={user} />
+        </Route>
+        <Route path="/sign_up">
+          <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+        </Route>
+        <Route path="/login">
+          <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
         </Route>
         <Route path="*">
           <h1>404 not found</h1>

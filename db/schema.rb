@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_26_194701) do
+ActiveRecord::Schema.define(version: 2022_03_30_162703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "constellations", force: :cascade do |t|
     t.string "name"
-    t.string "meaning"
     t.string "abbreviation"
     t.string "right_ascension_hrs_mins"
     t.string "declination_degs_mins"
@@ -30,6 +29,7 @@ ActiveRecord::Schema.define(version: 2022_03_26_194701) do
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "meaning"
   end
 
   create_table "stars", force: :cascade do |t|
@@ -50,10 +50,12 @@ ActiveRecord::Schema.define(version: 2022_03_26_194701) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "username"
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "stars", "constellations"

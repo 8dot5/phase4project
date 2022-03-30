@@ -1,27 +1,37 @@
 import React, { useState } from 'react';
+import Auth from './Auth';
+import { useHistory } from "react-router-dom";
 
-function Login() {
+function Login({setUser, setIsAuthenticated}) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+	const [error, setError] = useState([])
+    let history = useHistory();
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log(username, 'this is name')
         console.log(password, 'this is password')
 
-		const formData = { username, password}
+		const user = { username: username, password }
 
 		{/* Controlled form input validation! */}
-		fetch("http://localhost:3000/login", {
-		// fetch("https://constellation-lookup.herokuapp.com/login", {
+		fetch("/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
 		},
-		body: JSON.stringify(formData)
+		body: JSON.stringify(user)
 		}).then((r) => {
 			if (r.ok) {
-			  r.json().then((user) => setUsername(user));
+			  r.json()
+			  .then((user) => {
+				  setUser(user)
+				  setIsAuthenticated(true)
+				  console.log("!!!!", user)
+				  history.push('/')
+				});
 			}
 		});
     }
@@ -29,7 +39,7 @@ function Login() {
     let form = (
 		<div className="form-container">
 			<form className="form" onSubmit={handleSubmit}  >
-				<label htmlFor='Form'>Login!</label>
+				<label htmlFor='Form'>Login....</label>
 				<input
 					className="username"
 					type='text'

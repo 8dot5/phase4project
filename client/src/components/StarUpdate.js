@@ -18,7 +18,7 @@ function StarUpdate( {constellations, handleStarUpdate}) {
     let history = useHistory();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/stars/${star_id}`)
+        fetch(`/stars/${star_id}`)
         .then(r => r.json())
         .then(data => setStar(data))
         .then((data) => {
@@ -49,7 +49,7 @@ function StarUpdate( {constellations, handleStarUpdate}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch(`http://localhost:3000/stars/${star_id}`, {
+        fetch(`/stars/${star_id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -61,18 +61,21 @@ function StarUpdate( {constellations, handleStarUpdate}) {
                     handleStarUpdate(star);
             })
             // alert("Updated!");
-            history.push(`/constellations/${id}`)
-            setName('');
-            setStar('');
-            setBrightstar('');
-            setRightAscension('');
-            setDeclination('');
-            setApparentMagnitude('');
-            setAge('');
-            setMassKg('');
-            setRadiusKm('');
-            setImageUrl('');
-            setDistanceFromSun('');
+            .then(() => {
+                setName('');
+                setStar('');
+                setBrightstar('');
+                setRightAscension('');
+                setDeclination('');
+                setApparentMagnitude('');
+                setAge('');
+                setMassKg('');
+                setRadiusKm('');
+                setImageUrl('');
+                setDistanceFromSun('');
+                history.push(`/constellations/${id}`)
+            }
+                )
         }
 
     let form = (

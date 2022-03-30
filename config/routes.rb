@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :constellations, except: [:create, :destroy]
 
   # Sessions
-  # post '/login', to: 'sessions#create'
-  # delete '/logout', to: 'sessions#destroy'
+  post '/login', to: 'sessions#login'
+  delete '/logout', to: 'sessions#destroy'
+
+  get '/authorized_user', to:'users#show'
 
   # Constellations
   get '/constellations/:id', to: 'constellations#show'
