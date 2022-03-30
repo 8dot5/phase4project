@@ -27,10 +27,10 @@ function App() {
     setConstellations(updatedList)
   }
 
-  function handleUpdateStar() {
-    fetch('http://localhost:3000/stars/$:id')
-      .then((r) => r.json())
-      .then((s) => setStars(s));
+  function handleUpdateStar(updatedStar) {
+    console.log(updatedStar)
+    const updatedList = [updatedStar, ...constellations]
+    setConstellations(updatedList)
   }
 
   return (

@@ -21,13 +21,13 @@ function StarUpdate( {constellations, handleUpdateStar}) {
         .then(r => r.json())
         .then(data => setStar(data))
     }, [id])
-    
+
     let formData = {
         "name": name,
-        "bright_star": brightStar, 
+        "bright_star": brightStar,
         "right_ascension_hrs_mins": rightAscension,
         "declination_degs_mins": declination,
-        "apparent_magnitude": apparentMagnitude, 
+        "apparent_magnitude": apparentMagnitude,
         "age": age,
         "mass_kg": massKg,
         "radius_km": radiusKm,
@@ -46,8 +46,8 @@ function StarUpdate( {constellations, handleUpdateStar}) {
             })
                 .then(res => res.json())
                 .then(updatedStar => {
+                    handleUpdateStar(updatedStar)
             })
-            handleUpdateStar()
             alert("Updated!");
 
             setName('');
@@ -69,7 +69,7 @@ function StarUpdate( {constellations, handleUpdateStar}) {
                 <label>Edit the information for {star.name}</label>
                 <br></br>
                 <br></br>
-                
+
             </form>
             <form className='form' onSubmit={handleSubmit}>
                 <label htmlFor='Form'>Star Name:</label>
@@ -83,7 +83,7 @@ function StarUpdate( {constellations, handleUpdateStar}) {
                     onChange={e => setName(e.target.value)}
                 />
                 <br></br>
-                
+
                 <br></br>
                 <label htmlFor='Form'>Image:</label>
                 <br></br>
