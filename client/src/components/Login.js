@@ -26,7 +26,13 @@ function Login({setUser, setIsAuthenticated}) {
 		body: JSON.stringify(formData)
 		}).then((r) => {
 			if (r.ok) {
-			  r.json().then((user) => setUsername(user));
+			  r.json()
+			  .then((user) => {
+				  setUser(user)
+				//   setIsAuthenticated(true)
+				  console.log(user)
+				  history.push('/')
+				});
 			}
 		});
     }

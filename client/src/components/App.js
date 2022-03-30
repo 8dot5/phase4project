@@ -24,6 +24,7 @@ function App() {
         .then((user) => {
           setIsAuthenticated(true);
           setUser(user);
+          console.log("user", user)
         })
         .then(()=> {
           fetch("http://localhost:3000/constellations")
@@ -31,8 +32,10 @@ function App() {
           .then(c => setConstellations(c))
           });
         }
+        else
+          console.log(res)
       })
-  },[]);
+  },[user]);
 
 
 	useEffect(() => {
@@ -54,7 +57,7 @@ function App() {
   return (
     <>
     <NavBar setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} />
-    <Login />
+    <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser}/>
       <Switch>
         <Route exact path="/constellations/:id/stars">
           <StarCreate constellations={constellations} />

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
 
   def current_user
+    byebug
     User.find_by(id:session[:current_user])
   end
 

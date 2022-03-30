@@ -1,3 +1,4 @@
+require 'byebug'
 class SessionsController < ApplicationController
     skip_before_action :authorized_user, only: [:login]
 
@@ -5,6 +6,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username:params[:username])
         if user&.authenticate(params[:password])
             session[:current_user] = user.id
+            # byebug
             render json: user, status: :ok
         else
             render json: {error: "Invalid Password or Username"}, status: :unprocessable_entity
