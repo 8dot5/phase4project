@@ -3,7 +3,6 @@ import { Switch, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import Login from './Login';
 import Constellation from "./Constellation";
-import Star from "./Star";
 import StarCreate from "./StarCreate";
 import StarUpdate from './StarUpdate';
 
@@ -12,7 +11,6 @@ import StarUpdate from './StarUpdate';
 function App() {
 	const [constellations, setConstellations] = useState([]);
   const [stars, setStars] = useState([]);
-  // let { id } = useParams();
 
 	useEffect(() => {
     fetch("http://localhost:3000/constellations")
@@ -30,7 +28,7 @@ function App() {
   function handleUpdateStar(updatedStar) {
     console.log(updatedStar)
     const updatedList = [updatedStar, ...constellations]
-    setConstellations(updatedList)
+    setStars(updatedList)
   }
 
   return (
