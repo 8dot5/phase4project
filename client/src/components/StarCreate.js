@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom"
 
 
-function StarCreate( {constellations, handleAddStar}) {
+function StarCreate( {constellations, handleAddUpdateStar}) {
     // TODO: fix persistence of constellation ID
     const [name, setName] = useState('');
     const [constellation, setConstellation] = useState('');
@@ -68,8 +68,8 @@ function StarCreate( {constellations, handleAddStar}) {
             body: JSON.stringify(formData)
             })
                 .then(res => res.json())
-                .then(newStar => {
-                    handleAddStar(newStar)
+                .then(star => {
+                    handleAddUpdateStar(star)
             })
             alert("Submitted!");
 

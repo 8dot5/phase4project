@@ -10,7 +10,6 @@ import StarUpdate from './StarUpdate';
 
 function App() {
 	const [constellations, setConstellations] = useState([]);
-  const [stars, setStars] = useState([]);
 
 	useEffect(() => {
     fetch("http://localhost:3000/constellations")
@@ -19,16 +18,10 @@ function App() {
 			.then((c) => setConstellations(c));
 	}, []);
 
-  function handleAddStar(newStar){
-    console.log(newStar)
-    const updatedList = [newStar, ...constellations]
+  function handleAddUpdateStar(star){
+    console.log(star)
+    const updatedList = [star, ...constellations]
     setConstellations(updatedList)
-  }
-
-  function handleUpdateStar(updatedStar) {
-    console.log(updatedStar)
-    const updatedList = [updatedStar, ...constellations]
-    setStars(updatedList)
   }
 
   return (
@@ -36,10 +29,10 @@ function App() {
     <Login />
       <Switch>
         <Route exact path="/constellations/:id/stars">
-          <StarCreate constellations={constellations} handleAddStar={handleAddStar} />
+          <StarCreate constellations={constellations} handleAddUpdateStar={handleAddUpdateStar} />
         </Route>
         <Route exact path="/constellations/:id/stars/:id">
-          <StarUpdate constellations={constellations} handleUpdateStar={handleUpdateStar} />
+          <StarUpdate constellations={constellations} handleAddUpdateStar={handleAddUpdateStar} />
         </Route>
         <Route exact path="/constellations/:id">
           <Constellation constellations={constellations} />

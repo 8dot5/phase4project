@@ -25,7 +25,7 @@ function Constellation () {
         return (
         <div className="star-details" key={star.name}>
             <h3><b>{star.name}</b></h3>
-            <img src={star.image_url ? star.image_url : 'https://upload.wikimedia.org/wikipedia/commons/5/57/Betelgeuse_captured_by_ALMA.jpg'} 
+            <img src={star.image_url ? star.image_url : 'https://upload.wikimedia.org/wikipedia/commons/5/57/Betelgeuse_captured_by_ALMA.jpg'}
             height="300"
             width="300">
             </img>
@@ -41,6 +41,7 @@ function Constellation () {
             <button onClick={(e) => {
                 e.preventDefault();
                 handleDelete(star.id);
+                alert("Deleted!");
                 }}>
                     Delete star
             </button>
