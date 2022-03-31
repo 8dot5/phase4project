@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams, useHistory } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
-function StarUpdate( {constellations, handleStarUpdate}) {
+function StarUpdate( {constellations, handleStarUpdate, history}) {
     // TODO: fix persistence of constellation ID
     const [star, setStar] = useState('');
     const [name, setName] = useState('');
@@ -15,7 +15,6 @@ function StarUpdate( {constellations, handleStarUpdate}) {
     const [imageUrl, setImageUrl] = useState('');
     const [distanceFromSun, setDistanceFromSun] = useState('');
     let { id, star_id } = useParams();
-    let history = useHistory();
 
     useEffect(() => {
         fetch(`/stars/${star_id}`)

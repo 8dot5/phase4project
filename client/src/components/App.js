@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react';
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import Home from "./Home";
@@ -17,6 +17,7 @@ function App() {
   const [errors, setErrors] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  let history = useHistory();
 
   useEffect(() => {
     fetch("/authorized_user")
@@ -49,9 +50,7 @@ function App() {
     console.log(constellations)
     constellation.stars = [star, ...constellation.stars]}
   }
-  // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
 
-  // if (!isAuthenticated) return <Auth />;
 
 
   return (
@@ -65,7 +64,7 @@ function App() {
           <StarCreate constellations={constellations} />
         </Route>
         <Route exact path="/constellations/:id/stars/:star_id">
-          <StarUpdate constellations={constellations} handleStarUpdate={handleStarUpdate} />
+        <StarUpdate constellations={constellations} handleStarUpdate={handleStarUpdate} history={history} />
         </Route>
         <Route exact path="/constellations/:id">
           <Constellation constellations={constellations} />
@@ -77,7 +76,7 @@ function App() {
           <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
         </Route>
         <Route path="/login">
-          <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
+          <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} history={history} />
         </Route>
         <Route path="*">
           <h1>404 not found</h1>

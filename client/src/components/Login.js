@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import Auth from './Auth';
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Login({setUser, setIsAuthenticated}) {
+function Login({setUser, setIsAuthenticated, history}) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
 	const [error, setError] = useState([])
-    let history = useHistory();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -78,7 +77,7 @@ const ButtonBase = styled.button`
   padding: 8px 16px;
   text-decoration: none;
   background: LightSkyBlue;
-  color: white;
+  color: white
 `;
 
 const SignupButton = styled.button`
@@ -89,15 +88,7 @@ const SignupButton = styled.button`
   padding: 8px 16px;
   text-decoration: none;
   background: Green;
-  color: white;
-  &:hover,
-  &:focus {
-    background: white;
-    color: black;
-  }
-  &:active {
-    color: black;
-  }
+  color: white
 `;
 
 const Divider = styled.hr`
