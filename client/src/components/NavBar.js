@@ -19,9 +19,10 @@ function NavBar({ setUser, setIsAuthenticated, user }) {
     <Header>
       <nav className="navBar">
         <h1>✨ Constellation Lookup</h1>
-        <ButtonBase as={Link} to="/">Home</ButtonBase>
+        <ButtonBase as={Link} to="/">Look up 🔭</ButtonBase>
+        {user ? <small><em>welcome, {user.username}</em> !</small> : null }
 
-        {user ? <ButtonBase as={Link} to="/" onClick={logout}>Logout</ButtonBase> : <ButtonBase as={Link} to="/login">Login</ButtonBase>}
+        {user ? <ButtonBase as={Link} to="/" onClick={logout}>Log out</ButtonBase> : null }
 
         {/* The /signup route is visible on the /login page. Uncommenting the following line will display the Signup button in the Nav area */}
         {/* <ButtonBase as={Link} to="/signup">Sign Up</ButtonBase> */}

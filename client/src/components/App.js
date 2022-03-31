@@ -76,7 +76,7 @@ function App() {
           <Home constellations={constellations} setConstellations={setConstellations} user={user} />
         </Route>
         <Route path="/signup">
-          <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+          <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated} history={history} />
         </Route>
         <Route path="/login">
           <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} history={history} />

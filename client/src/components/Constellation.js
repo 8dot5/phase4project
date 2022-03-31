@@ -25,8 +25,8 @@ function Constellation () {
 
     let starList = (constellation.stars || []).map(star => {
         return (
-        <div className="star-details" key={star.name}>
-            <h3><b>{star.name}</b></h3>
+        <Card className="star-details" key={star.name}>
+            <H3><b>{star.name}</b></H3>
             <img src={star.image_url ? star.image_url : 'https://upload.wikimedia.org/wikipedia/commons/5/57/Betelgeuse_captured_by_ALMA.jpg'}
             height="300"
             width="300">
@@ -47,7 +47,7 @@ function Constellation () {
                 }}>
                     Delete star
             </button>
-        </div>
+        </Card>
 
         )
     })
@@ -90,6 +90,16 @@ padding-bottom:10vw;
 
 const H1 = styled.h1`
 color:lightblue;
+font-style:oblique;
+text-transform:uppercase;
+font-family:Lucida;
+margin-left:auto;
+margin-right:auto;
+text-decoration:none;
+`
+
+const H3 = styled.h3`
+color:orange;
 font-style:oblique;
 text-transform:uppercase;
 font-family:Lucida;
