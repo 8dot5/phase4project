@@ -1,5 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import { Switch, Route, Link } from "react-router-dom";
+import styled from "styled-components";
+
 import Home from "./Home";
 import Constellation from "./Constellation";
 import StarCreate from "./StarCreate";
@@ -26,11 +28,6 @@ function App() {
           setUser(user);
           console.log("logged in as ", user)
         })
-        // .then(()=> {
-        //   fetch("/constellations")
-        //   .then(res => res.json())
-        //   .then(c => setConstellations(c))
-        //   });
         }
         else
           console.log(res)
@@ -52,15 +49,17 @@ function App() {
     console.log(constellations)
     constellation.stars = [star, ...constellation.stars]}
   }
-
   // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
+
   // if (!isAuthenticated) return <Auth />;
 
 
   return (
     <>
+
     <NavBar setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} />
     {/* <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser}/> */}
+      <main>
       <Switch>
         <Route exact path="/constellations/:id/stars">
           <StarCreate constellations={constellations} />
@@ -74,7 +73,7 @@ function App() {
         <Route exact path="/">
           <Home constellations={constellations} setConstellations={setConstellations} user={user} />
         </Route>
-        <Route path="/sign_up">
+        <Route path="/signup">
           <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
         </Route>
         <Route path="/login">
@@ -85,8 +84,24 @@ function App() {
           <Link to="/">Go home</Link>
         </Route>
       </Switch>
+      </main>
+
     </>
   );
 }
+
+
+
+const Wrapper = styled.div`
+  background-position: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 8px; */
+  background-color: yellow;
+`;
+
+
 
 export default App;

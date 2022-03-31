@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Auth from './Auth';
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
 function Login({setUser, setIsAuthenticated}) {
     const [username, setUsername] = useState('')
@@ -36,39 +37,32 @@ function Login({setUser, setIsAuthenticated}) {
 		});
     }
 
-    let form = (
-		<div className="form-container">
-			<form className="form" onSubmit={handleSubmit}  >
-				<label htmlFor='Form'>Login....</label>
-				<input
-					className="username"
-					type='text'
-					id='username'
-					value={username}
-					placeholder="Your username..."
-					onChange={e => setUsername(e.target.value)}
-				/>
-				<input
-					className="password"
-					type='text'
-					id='password'
-					value={password}
-					placeholder="Your password"
-					onChange={e => setPassword(e.target.value)}
-				/>
+	return (
+		<Wrapper>
+			<h1>Login</h1>
+			<form onSubmit={handleSubmit}>
+			<label>
+			  Username
+			  <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+			</label>
+			<label>
+			  Password
+			<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+			</label>
 
-				<button className="card_button" type="submit">Submit</button>
-
-			</form>
-
-		</div>
-
+			<input type="submit" value="Login!" />
+		  </form>
+		</Wrapper>
 	)
-    return (
-        <div className="login">
-            {form}
-        </div>
-    )
 }
+
+const Wrapper = styled.div`
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+`;
 
 export default Login;
