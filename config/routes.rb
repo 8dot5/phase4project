@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :constellations, except: [:create, :destroy]
 
   # Sessions
-  post '/login', to: 'sessions#login'
+  post '/create', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
   get '/authorized_user', to:'users#show'
