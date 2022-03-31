@@ -36,24 +36,24 @@ function Login({setUser, setIsAuthenticated, history}) {
 
 	return (
 		<Wrapper>
-			<h1>Log in or create an account</h1>
+			<H1>Log in or create an account</H1>
 			<form onSubmit={handleSubmit}>
-				<label>
+				<Label>
 				Username &nbsp;
 				<input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-				</label>
-				<label>
+				</Label>
+				<Label>
 				Password &nbsp;
 				<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-				</label>
+				</Label>
 				<input type="submit" value="Login!" />
 		  	</form>
 
 			<Divider />
-				<p>
+				<P>
 					Don't have an account? &nbsp;
 					<SignupButton as={Link} to="/signup">Sign Up</SignupButton>
-				</p>
+				</P>
 		</Wrapper>
 	)
 }
@@ -67,6 +67,18 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 8px;
+`;
+
+const H1 = styled.h1`
+color:white;
+`;
+
+const P = styled.p`
+color:white;
+`;
+
+const Label = styled.label`
+color:white;
 `;
 
 const ButtonBase = styled.button`

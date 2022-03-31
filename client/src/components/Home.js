@@ -22,8 +22,8 @@ function Home({ user, constellations, setConstellations }) {
 
 				<Img alt="constellation_image" src={constellation.image_url}></Img>
 			</Card>
-		)).sort(function(c0,c1) {
-			return c0.name - c1.name
+		)).sort(function(c1,c2) {
+			return c1.id - c2.id
 		})
 
 	// return (
@@ -35,7 +35,7 @@ function Home({ user, constellations, setConstellations }) {
 	return (
         <div className="cards">
              {user ? itemsToDisplay :
-			 <P><A href='/login'><em>Log in</em> to view constellations...</A></P>
+			 <P2><A2 href='/login'><em>Log in</em> to view constellations...</A2></P2>
 			  }
         </div>
     )
@@ -77,7 +77,17 @@ margin-left:auto;
 margin-right:auto;
 text-decoration:none;
 `
-
+const P2 = styled.p`
+color:white;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+text-decoration:none;
+`
+const A2 = styled.a`
+color:white;
+text-decoration:none;
+`
 const Img = styled.img`
 position:flex;
 display:flex;
