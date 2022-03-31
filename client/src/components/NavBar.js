@@ -50,8 +50,25 @@ const ButtonBase = styled.button`
   border-radius: 6px;
   padding: 8px 16px;
   text-decoration: none;
-  background: LightSkyBlue;
-  color: white
+  background: transparent;
+  color: white;
+  &:hover,
+  &:focus {
+    background: green;
+    color: white;
+  }
+  &:active {
+    color: black;
+  }
+`;
+
+const FillButton = styled(ButtonBase)`
+  background-color: var(--main);
+  color: var(--accent);
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 export default NavBar

@@ -32,4 +32,6 @@ function Home({ user, constellations, setConstellations }) {
 	)
 }
 
+
+
 export default Home;
