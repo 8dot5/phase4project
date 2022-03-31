@@ -36,6 +36,7 @@ function App() {
       })
   },[]);
 
+  console.log(user, isAuthenticated)
 
 	useEffect(() => {
 		if (user && constellations.length === 0){

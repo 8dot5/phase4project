@@ -28,7 +28,7 @@ function Auth({ setUser, setIsAuthenticated }) {
 
     return (
       <Wrapper>
-          <h1>Sign UP</h1>
+          <h1>Sign up</h1>
           <form onSubmit={onSubmit}>
           <label>
             Username
@@ -48,6 +48,8 @@ function Auth({ setUser, setIsAuthenticated }) {
 
 const Wrapper = styled.div`
   min-height: 60vh;
+  background-color:black;
+  opacity:80%;
   display: flex;
   justify-content: center;
   flex-direction: column;

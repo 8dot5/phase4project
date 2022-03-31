@@ -61,6 +61,8 @@ function Login({setUser, setIsAuthenticated, history}) {
 
 const Wrapper = styled.div`
   min-height: 60vh;
+  background-color:black;
+  opacity:80%;
   display: flex;
   justify-content: center;
   flex-direction: column;
