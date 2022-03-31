@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     # skip_before_action :authorized_user, only: [:login]
 
     # THIS IS WORKING!
-    def login
+    def create
         user = User.find_by(username:params[:username])
         if user&.authenticate(params[:password])
             session[:current_user] = user.id

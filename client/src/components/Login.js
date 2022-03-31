@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Auth from './Auth';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import styled from "styled-components";
 
 function Login({setUser, setIsAuthenticated}) {
     const [username, setUsername] = useState('')
@@ -17,7 +18,7 @@ function Login({setUser, setIsAuthenticated}) {
 		const user = { username: username, password }
 
 		{/* Controlled form input validation! */}
-		fetch("/login", {
+		fetch("/create", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
@@ -36,39 +37,65 @@ function Login({setUser, setIsAuthenticated}) {
 		});
     }
 
-    let form = (
-		<div className="form-container">
-			<form className="form" onSubmit={handleSubmit}  >
-				<label htmlFor='Form'>Login....</label>
-				<input
-					className="username"
-					type='text'
-					id='username'
-					value={username}
-					placeholder="Your username..."
-					onChange={e => setUsername(e.target.value)}
-				/>
-				<input
-					className="password"
-					type='text'
-					id='password'
-					value={password}
-					placeholder="Your password"
-					onChange={e => setPassword(e.target.value)}
-				/>
+	return (
+		<Wrapper>
+			<h1>Log in or create an account</h1>
+			<form onSubmit={handleSubmit}>
+				<label>
+				Username &nbsp;
+				<input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+				</label>
+				<label>
+				Password &nbsp;
+				<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+				</label>
+				<input type="submit" value="Login!" />
+		  	</form>
 
-				<button className="card_button" type="submit">Submit</button>
-
-			</form>
-
-		</div>
-
+			<Divider />
+				<p>
+					Don't have an account? &nbsp;
+					<SignupButton as={Link} to="/signup">Sign Up</SignupButton>
+				</p>
+		</Wrapper>
 	)
-    return (
-        <div className="login">
-            {form}
-        </div>
-    )
 }
+
+const Wrapper = styled.div`
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+`;
+
+const ButtonBase = styled.button`
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 16px;
+  text-decoration: none;
+  background: LightSkyBlue;
+  color: white
+`;
+
+const SignupButton = styled.button`
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 16px;
+  text-decoration: none;
+  background: Green;
+  color: white
+`;
+
+const Divider = styled.hr`
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin: 16px 0;
+`;
 
 export default Login;

@@ -1,5 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import styled from "styled-components";
+
+// import Login from "./Login";
 
 function NavBar({ setUser, setIsAuthenticated, user }) {
   const logout = () => {
@@ -13,12 +16,42 @@ function NavBar({ setUser, setIsAuthenticated, user }) {
   }
 
   return (
-    <nav>
-      <span className="logo">{""}</span>
-      <button onClick={logout}>Logout</button>
-      <NavLink exact to="/">Home</NavLink>
+    <Header>
+      <nav className="navBar">
+        <h1>Constellation Lookup</h1>
+        {/* <Logo>Constellation Lookup</Logo> */}
+        <ButtonBase as={Link} to="/">Home</ButtonBase>
+        <ButtonBase as={Link} to="/login">Login</ButtonBase>
+        <ButtonBase onClick={logout}>Logout</ButtonBase>
+
+        {/* The /signup route is visible on the /login page. Uncommenting the following line will display the Signup button in the Nav area */}
+        {/* <ButtonBase as={Link} to="/signup">Sign Up</ButtonBase> */}
     </nav>
+    </Header>
   )
 }
+
+const Header = styled.header`
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: black;
+  font-size: 1.3em;
+  color: white;
+  display: grid;
+`;
+
+const ButtonBase = styled.button`
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 16px;
+  text-decoration: none;
+  background: LightSkyBlue;
+  color: white
+`;
 
 export default NavBar
