@@ -28,7 +28,6 @@ function Login({setUser, setIsAuthenticated, history}) {
 			  .then((user) => {
 				  setUser(user)
 				  setIsAuthenticated(true)
-				  console.log("!!!!", user)
 				  history.push('/')
 				});
 			}

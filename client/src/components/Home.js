@@ -16,14 +16,12 @@ function Home({ user, constellations, setConstellations }) {
 
 	let itemsToDisplay =
 		constellations.map((constellation) => (
-			<div key={constellation.id} className="card">
-				<h2>
-					<Link to={`/constellations/${constellation.id}`}>{constellation.name}</Link>
-				</h2>
-				<p>{constellation.name}</p>
-				<p>{constellation.abbreviation}</p>
-				<img alt="constellation_image" src={constellation.image_url}></img>
-			</div>
+			<Card key={constellation.id} className="card">
+				<H2><A href={`/constellations/${constellation.id}`}>{constellation.name}</A></H2>
+				<P><em>occupying {constellation.percentage_of_sky_area}% of the visible sky<br/>in celestial quadrant {constellation.quadrant}</em></P>
+
+				<Img alt="constellation_image" src={constellation.image_url}></Img>
+			</Card>
 		)).sort(function(c0,c1) {
 			return c0.name - c1.name
 		})
@@ -43,17 +41,47 @@ function Home({ user, constellations, setConstellations }) {
     )
 }
 
+const Card = styled.div `
+margin-left:auto;
+margin-right:auto;
+background: rgba(0, 0, 0, 0.8);
+display:flex;
+flex-direction: column;
+justify-content:center;
+width:60%;
+padding-bottom:10vw;
+`
+
 const A = styled.a`
+color:lightblue;
+text-transform:uppercase;
+padding-bottom:0px;
+// font-family:Courier New, monospace;
+text-decoration:none;
+`
+
+const H2 = styled.h2`
 color:white;
+margin-left:auto;
+margin-right:auto;
 text-decoration:none;
 `
 
 const P = styled.p`
 color:white;
+display:inline;
 text-align:center;
 margin-left:auto;
 margin-right:auto;
 text-decoration:none;
+`
+
+const Img = styled.img`
+position:flex;
+display:flex;
+margin-left:auto;
+margin-right:auto;
+
 `
 
 
