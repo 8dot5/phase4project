@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { Switch, Route, Link, useHistory } from "react-router-dom";
+
 import styled from "styled-components";
 
 import Home from "./Home";
@@ -35,6 +36,7 @@ function App() {
       })
   },[]);
 
+  console.log(user, isAuthenticated)
 
 	useEffect(() => {
 		if (user && constellations.length === 0){

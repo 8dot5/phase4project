@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Constellation from "./Constellation";
+import styled from "styled-components";
+
 
 function Home({ user, constellations, setConstellations }) {
 	// const [constellations, setConstellations] = useState([])
@@ -33,14 +35,24 @@ function Home({ user, constellations, setConstellations }) {
 	return (
         <div className="cards">
              {user ? itemsToDisplay :
-			 <p>Log in to view constellations...</p>
-            //   <>
-
-            //   <img src="https://i.ibb.co/qyKVMdz/Local-Group-and-nearest-galaxies-copy.png" alt="local_group_loading" width="768" height="573"></img>
-            //   </>
+			 <P><A href='/login'><em>Log in</em> to view constellations...</A></P>
 			  }
         </div>
     )
 }
+
+const A = styled.a`
+color:white;
+text-decoration:none;
+`
+
+const P = styled.p`
+color:white;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+text-decoration:none;
+`
+
 
 export default Home;
