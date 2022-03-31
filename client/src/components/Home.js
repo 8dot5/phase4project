@@ -23,8 +23,9 @@ function Home({ user, constellations, setConstellations }) {
 				<Img alt="constellation_image" src={constellation.image_url}></Img>
 			</Card>
 		)).sort(function(c1,c2) {
-			return c1.id - c2.id
+			return c1.key - c2.key
 		})
+
 
 	// return (
 	// 	<div className="cards">
