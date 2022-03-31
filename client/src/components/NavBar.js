@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from "styled-components";
 
 // import Login from "./Login";
@@ -14,24 +14,18 @@ function NavBar({ setUser, setIsAuthenticated, user }) {
         setUser(null)
     })
   }
-  // return (e
-  //   <nav>
-  //     <button exact to="/">Login</button>
-  //     <button onClick={logout}>Logout</button>
-  //     <button exact to="/signup">Signup</button>
-  //   </nav>
-  // )
-
 
   return (
     <Header>
       <nav className="navBar">
-      <h1>Constellation Lookup</h1>
-      {/* <Logo>Constellation Lookup</Logo> */}
-      <ButtonBase exact to="/">Home</ButtonBase>
+        <h1>Constellation Lookup</h1>
+        {/* <Logo>Constellation Lookup</Logo> */}
+        <ButtonBase as={Link} to="/">Home</ButtonBase>
+        <ButtonBase as={Link} to="/login">Login</ButtonBase>
+        <ButtonBase onClick={logout}>Logout</ButtonBase>
 
-      <ButtonBase exact to="/login">Login</ButtonBase>
-      <ButtonBase onClick={logout}>Logout</ButtonBase>
+        {/* The /signup route is visible on the /login page. Uncommenting the following line will display the Signup button in the Nav area */}
+        {/* <ButtonBase as={Link} to="/signup">Sign Up</ButtonBase> */}
     </nav>
     </Header>
   )
@@ -47,8 +41,6 @@ const Header = styled.header`
   font-size: 1.3em;
   color: white;
   display: grid;
-  /* grid-column-gap: 20px; */
-  /* grid-auto-flow: column; */
 `;
 
 const ButtonBase = styled.button`
@@ -60,18 +52,6 @@ const ButtonBase = styled.button`
   text-decoration: none;
   background: LightSkyBlue;
   color: white
-`;
-
-const Nav = styled.nav`
-  font-family: "Trebuchet MS";
-  font-size: 2rem;
-  color: LightSkyBlue;
-  display: block;
-  gap: 4px;
-  position: absolute;
-  right: 8px;
-  padding-top: 30px;
-
 `;
 
 export default NavBar
