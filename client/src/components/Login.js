@@ -42,23 +42,21 @@ function Login({setUser, setIsAuthenticated}) {
 			<h1>Log in or create an account</h1>
 			<form onSubmit={handleSubmit}>
 				<label>
-				Username
+				Username &nbsp;
 				<input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
 				</label>
 				<label>
-				Password
+				Password &nbsp;
 				<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 				</label>
 				<input type="submit" value="Login!" />
 		  	</form>
 
-
 			<Divider />
-			  <p>
-            Don't have an account? &nbsp;
-
-			<SignupButton as={Link} to="/signup">Sign Up</SignupButton>
-          	</p>
+				<p>
+					Don't have an account? &nbsp;
+					<SignupButton as={Link} to="/signup">Sign Up</SignupButton>
+				</p>
 		</Wrapper>
 	)
 }
