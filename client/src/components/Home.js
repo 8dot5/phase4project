@@ -26,7 +26,11 @@ function Home({ user, constellations, setConstellations }) {
 
 	return (
 		<div className="cards">
-     		 {user ? itemsToDisplay : <p>Loading...</p> }
+     		 {user ? itemsToDisplay : 
+			  <>
+			  <p>Log in to view constellations...</p>
+			  <img src="https://i.ibb.co/qyKVMdz/Local-Group-and-nearest-galaxies-copy.png" alt="local_group_loading" width="768" height="573"></img>
+			  </>}
     	</div>
 
 	)
