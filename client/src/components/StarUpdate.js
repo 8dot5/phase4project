@@ -15,7 +15,6 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
     const [imageUrl, setImageUrl] = useState('');
     const [distanceFromSun, setDistanceFromSun] = useState('');
     let { id, star_id } = useParams();
-    // let history = useHistory();
 
     useEffect(() => {
         fetch(`/stars/${star_id}`)

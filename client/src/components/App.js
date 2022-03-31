@@ -19,7 +19,6 @@ function App() {
   const [user, setUser] = useState(null);
   let history = useHistory();
 
-
   useEffect(() => {
     fetch("/authorized_user")
     .then((res) => {
@@ -51,9 +50,7 @@ function App() {
     console.log(constellations)
     constellation.stars = [star, ...constellation.stars]}
   }
-  // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
 
-  // if (!isAuthenticated) return <Auth />;
 
 
   return (
@@ -67,7 +64,8 @@ function App() {
           <StarCreate constellations={constellations} history={history} />
         </Route>
         <Route exact path="/constellations/:id/stars/:star_id">
-          <StarUpdate constellations={constellations} handleStarUpdate={handleStarUpdate} history={history} />
+        <StarUpdate constellations={constellations} handleStarUpdate={handleStarUpdate} history={history} />
+
         </Route>
         <Route exact path="/constellations/:id">
           <Constellation constellations={constellations} />
