@@ -46,17 +46,17 @@ margin-left:auto;
 margin-right:auto;
 background: rgba(0, 0, 0, 0.8);
 display:flex;
-flex-direction: column;
+flex-direction:column;
 justify-content:center;
 width:60%;
 padding-bottom:10vw;
 `
 
 const A = styled.a`
+margin:0px;
+padding:0px;
 color:lightblue;
 text-transform:uppercase;
-padding-bottom:0px;
-// font-family:Courier New, monospace;
 text-decoration:none;
 `
 
@@ -64,12 +64,14 @@ const H2 = styled.h2`
 color:white;
 margin-left:auto;
 margin-right:auto;
+margin-bottom:-10px;
 text-decoration:none;
 `
 
 const P = styled.p`
 color:white;
 display:inline;
+font-family:Lucida;
 text-align:center;
 margin-left:auto;
 margin-right:auto;
