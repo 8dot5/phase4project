@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import Auth from './Auth';
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Login({setUser, setIsAuthenticated}) {
+function Login({setUser, setIsAuthenticated, history}) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
 	const [error, setError] = useState([])
-    let history = useHistory();
+    // let history = useHistory();
 
     function handleSubmit(e) {
         e.preventDefault();
