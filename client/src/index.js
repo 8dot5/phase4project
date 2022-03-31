@@ -25,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
     /* background-image: url('https://apod.nasa.gov/apod/image/2005/Lyrids_Horalek_1221.jpg'); */
     
     background-image: url("https://i.ibb.co/qyKVMdz/Local-Group-and-nearest-galaxies-copy.png");
+    background-color:black;
+    background-size:60%;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
