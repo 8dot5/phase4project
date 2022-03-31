@@ -78,7 +78,7 @@ const ButtonBase = styled.button`
   padding: 8px 16px;
   text-decoration: none;
   background: LightSkyBlue;
-  color: white
+  color: white;
 `;
 
 const SignupButton = styled.button`
@@ -89,7 +89,15 @@ const SignupButton = styled.button`
   padding: 8px 16px;
   text-decoration: none;
   background: Green;
-  color: white
+  color: white;
+  &:hover,
+  &:focus {
+    background: white;
+    color: black;
+  }
+  &:active {
+    color: black;
+  }
 `;
 
 const Divider = styled.hr`

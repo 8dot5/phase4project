@@ -18,10 +18,11 @@ function NavBar({ setUser, setIsAuthenticated, user }) {
   return (
     <Header>
       <nav className="navBar">
-        <h1>Constellation Lookup</h1>
-        {/* <Logo>Constellation Lookup</Logo> */}
+        <h1>✨ Constellation Lookup</h1>
         <ButtonBase as={Link} to="/">Home</ButtonBase>
+
         {user ? <ButtonBase as={Link} to="/" onClick={logout}>Logout</ButtonBase> : <ButtonBase as={Link} to="/login">Login</ButtonBase>}
+
         {/* The /signup route is visible on the /login page. Uncommenting the following line will display the Signup button in the Nav area */}
         {/* <ButtonBase as={Link} to="/signup">Sign Up</ButtonBase> */}
     </nav>
@@ -48,8 +49,25 @@ const ButtonBase = styled.button`
   border-radius: 6px;
   padding: 8px 16px;
   text-decoration: none;
-  background: LightSkyBlue;
-  color: white
+  background: transparent;
+  color: white;
+  &:hover,
+  &:focus {
+    background: green;
+    color: white;
+  }
+  &:active {
+    color: black;
+  }
+`;
+
+const FillButton = styled(ButtonBase)`
+  background-color: var(--main);
+  color: var(--accent);
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 export default NavBar
