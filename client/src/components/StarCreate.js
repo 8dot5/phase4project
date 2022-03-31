@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useParams, useHistory } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 
-function StarCreate( {constellations}) {
+function StarCreate( {history}) {
     // TODO: fix persistence of constellation ID - I THINK WE CAN DELETE THIS?
-    let history = useHistory();
     let { id } = useParams();
     
     const [name, setName] = useState('');

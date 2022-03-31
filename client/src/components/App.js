@@ -61,10 +61,11 @@ function App() {
       <main>
       <Switch>
         <Route exact path="/constellations/:id/stars">
-          <StarCreate constellations={constellations} />
+          <StarCreate constellations={constellations} history={history} />
         </Route>
         <Route exact path="/constellations/:id/stars/:star_id">
         <StarUpdate constellations={constellations} handleStarUpdate={handleStarUpdate} history={history} />
+
         </Route>
         <Route exact path="/constellations/:id">
           <Constellation constellations={constellations} />

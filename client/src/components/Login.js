@@ -8,7 +8,6 @@ function Login({setUser, setIsAuthenticated, history}) {
     const [password, setPassword] = useState('')
 
 	const [error, setError] = useState([])
-
     function handleSubmit(e) {
         e.preventDefault();
         console.log(username, 'this is name')
