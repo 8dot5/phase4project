@@ -12,7 +12,7 @@ function Home({ user, constellations, setConstellations }) {
 			fetch("/constellations")
 				.then((r) => r.json())
 				.then((c) => setConstellations(c));}
-	}, []);
+	}, [user]);
 
 	let itemsToDisplay =
 		constellations.map((constellation) => (
@@ -24,7 +24,9 @@ function Home({ user, constellations, setConstellations }) {
 				<p>{constellation.abbreviation}</p>
 				<img alt="constellation_image" src={constellation.image_url}></img>
 			</div>
-		))
+		)).sort(function(c0,c1) {
+			return c0.name - c1.name
+		})
 
 	// return (
 	// 	<div className="cards">
