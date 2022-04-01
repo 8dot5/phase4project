@@ -19,20 +19,17 @@ function Home({ user, constellations, setConstellations }) {
 			<Card key={constellation.id} className="card">
 				<H2><A href={`/constellations/${constellation.id}`}>{constellation.name}</A></H2>
 				<P><em>occupying {constellation.percentage_of_sky_area}% of the visible sky<br/>in celestial quadrant {constellation.quadrant}</em></P>
-
-				<Img alt="constellation_image" src={constellation.image_url}></Img>
+				<a href={`/constellations/${constellation.id}`}>
+				<Vignette>
+					<Img alt="constellation_image" src={constellation.image_url}></Img>
+					<Shadow></Shadow>
+				</Vignette>
+				</a>
 			</Card>
 		)).sort(function(c1,c2) {
 			return c1.key - c2.key
 		})
 
-
-	// return (
-	// 	<div className="cards">
-    //  		 {user ? itemsToDisplay : <p>Loading...</p> }
-    // 	</div>
-
-	// )
 	return (
         <div className="cards">
              {user ? itemsToDisplay :
@@ -47,12 +44,34 @@ margin-left:auto;
 margin-right:auto;
 background: rgba(0, 0, 0, 0.8);
 display:flex;
+flex-basis: auto;
 flex-direction:column;
 justify-content:center;
 width:60%;
 padding-bottom:10vw;
-`
+// border-radius:10%;
+// box-shadow: inset 0.2em 0.1em 0.99em white;
 
+`
+const Vignette = styled.div `
+margin-left:auto;
+margin-right:auto;
+background: rgba(0, 0, 0, 0.8);
+display:flex;
+flex-basis: auto;
+flex-direction:column;
+justify-content:center;
+width:fit-content;
+height:fit-content;
+box-shadow: inset 0.2em 0.1em 0.99em white;
+`
+const Shadow = styled.div `
+background: rgba(0, 0, 0, 0.8);
+flex-direction:column;
+position:absolute;
+box-shadow: 0.2em 0.1em 0.99em white;
+z-index:10;
+`
 const A = styled.a`
 margin:0px;
 padding:0px;
@@ -60,6 +79,7 @@ color:lightblue;
 text-transform:uppercase;
 text-decoration:none;
 `
+
 
 const H2 = styled.h2`
 color:white;
@@ -94,6 +114,7 @@ position:flex;
 display:flex;
 margin-left:auto;
 margin-right:auto;
+box-shadow: inset 0.2em 0.1em 0.99em white;
 
 `
 

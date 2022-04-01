@@ -27,52 +27,54 @@ function Constellation () {
         return (
         <Card className="star-details" key={star.name}>
             <H3><b>{star.name}</b></H3>
-            <img src={star.image_url ? star.image_url : 'https://upload.wikimedia.org/wikipedia/commons/5/57/Betelgeuse_captured_by_ALMA.jpg'}
+            {star.bright_star ? <H4>*{constellation.name}'s brightest star*</H4> : null }
+            <Img src={star.image_url ? star.image_url : 'https://upload.wikimedia.org/wikipedia/commons/5/57/Betelgeuse_captured_by_ALMA.jpg'}
             height="300"
             width="300">
-            </img>
+            </Img>
             <br></br>
             <Ul><em>Apparent Magnitude:</em> {star.apparent_magnitude}</Ul>
             {/* TODO: edit button should only render if user is authenticated */}
-            <button onClick={(e) => {
+            <Button onClick={(e) => {
                 e.preventDefault();
                 window.location.href=`http://localhost:4000/constellations/${id}/stars/${star.id}`;
                 }}>
                     Edit star info
-            </button>
-            <button onClick={(e) => {
+            </Button>
+            <Button onClick={(e) => {
                 e.preventDefault();
                 handleDelete(star.id);
-                alert("Deleted!");
                 }}>
                     Delete star
-            </button>
+            </Button>
         </Card>
 
         )
+    }).sort(function(c1,c2) {
+        return c1.key - c2.key
     })
+
     return (
         <Card className="constellation-details">
-
             <H1>{constellation.name}</H1>
             <Img alt="constellation_image" src={constellation.image_url}/>
-            <Ul>Meaning: <em>{constellation.meaning}</em></Ul>
-            <Ul>Origin: {constellation.origin}</Ul>
-            <Ul>Abbreviation: <em>{constellation.abbreviation}</em></Ul>
-            <Ul>Right Ascension (hours & minutes): {constellation.right_ascension_hrs_mins}</Ul>
-            <Ul>Declination (degrees & minutes): {constellation.declination_degs_mins}</Ul>
-            <Ul>Area (in square degrees): {constellation.area_sq_deg}</Ul>
-            <Ul>Percentage of Sky Area: {constellation.percentage_of_sky_area}</Ul>
-            <Ul>Quadrant: {constellation.quadrant}</Ul>
-            <Ul>Number of primary stars: {constellation.main_stars}</Ul>
+            <Ul><b>Meaning:</b> "{constellation.meaning}"</Ul>
+            <Ul><b>Origin:</b> {constellation.origin}</Ul>
+            <Ul><b>Abbreviation:</b> {constellation.abbreviation}</Ul>
+            <Ul><b>Right Ascension (hours & minutes):</b> {constellation.right_ascension_hrs_mins}</Ul>
+            <Ul><b>Declination (degrees & minutes):</b> {constellation.declination_degs_mins}</Ul>
+            <Ul><b>Area (in square degrees):</b> {constellation.area_sq_deg}</Ul>
+            <Ul><b>Percentage of Sky Area:</b> {constellation.percentage_of_sky_area}</Ul>
+            <Ul><b>Quadrant:</b> {constellation.quadrant}</Ul>
+            <Ul><b>Number of primary stars:</b> {constellation.main_stars}</Ul>
             <H2>Stars:</H2>
-            <button onClick={(e) => {
+            {starList}
+            <Button onClick={(e) => {
                 e.preventDefault();
                 window.location.href=`http://localhost:4000/constellations/${id}/stars`;
                 }}>
                     Add a star to {constellation.name}
-            </button>
-            {starList}
+            </Button>
         </Card>
     )
 }
@@ -100,11 +102,21 @@ text-decoration:none;
 
 const H3 = styled.h3`
 color:orange;
-font-style:oblique;
+// font-style:oblique;
 text-transform:uppercase;
 font-family:Lucida;
 margin-left:auto;
 margin-right:auto;
+text-decoration:none;
+`
+
+const H4 = styled.h4`
+color:orange;
+font-style:oblique;
+font-family:Lucida;
+margin-left:auto;
+margin-right:auto;
+margin-top:-10px;
 text-decoration:none;
 `
 
@@ -115,17 +127,20 @@ text-transform:uppercase;
 font-family:Lucida;
 margin-left:auto;
 margin-right:auto;
+padding-top:3vw;
 text-decoration:none;
 `
 
 const Ul = styled.ul`
 color:white;
 display:inline;
-font-family:Lucida;
+font-family:Arial;
+margin-bottom:-10px;
 text-align:center;
 margin-left:auto;
 margin-right:auto;
 text-decoration:none;
+padding:0;
 `
 const P2 = styled.p`
 color:white;
@@ -145,6 +160,42 @@ margin-left:auto;
 margin-right:auto;
 
 `
+
+// const Button = styled.button`
+
+// `
+const Button = styled.button`
+    position:flex;
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 8px 16px;
+    text-decoration: none;
+    background: transparent;
+    color: red;
+    &:hover,
+    &:focus {
+    background: yellow;
+    color: black;
+    }
+    &:active {
+    color: black;
+    }
+`;
+
+const FillButton = styled(Button)`
+  background-color: var(--main);
+  color: var(--accent);
+
+  &:hover {
+    opacity: 0.9;
+  }
+`;
 
 
 export default Constellation;

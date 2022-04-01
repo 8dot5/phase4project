@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+
 
 function StarUpdate( {constellations, handleStarUpdate, history}) {
     // TODO: fix persistence of constellation ID
@@ -78,15 +80,15 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
         }
 
     let form = (
-        <div className='form-container'>
+        <Card className='form-container'>
             <form className="star-form">
-                <label>Edit the information for {star.name}</label>
+                <Label>Edit the information for {star.name}</Label>
                 <br></br>
                 <br></br>
 
             </form>
             <form className='form' onSubmit={handleSubmit}>
-                <label htmlFor='Form'>Star Name:</label>
+                <Label htmlFor='Form'>Star Name:</Label>
                 <br></br>
                 <input
                     className="name"
@@ -97,9 +99,16 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                     onChange={e => setName(e.target.value)}
                 />
                 <br></br>
-
                 <br></br>
-                <label htmlFor='Form'>Image:</label>
+                <Label htmlFor='Form'>Brightest star?</Label>
+                <br></br>
+                <select onChange={e => setBrightstar(e.target.value)}>
+                    <option value="false">NOT TRUE</option>
+                    <option value="true">TRUE</option>
+                </select>
+                <br></br>
+                <br></br>
+                <Label htmlFor='Form'>Image:</Label>
                 <br></br>
                 <input
                     className="name"
@@ -111,7 +120,7 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Right ascension (hours, minutes, seconds):</label>
+                <Label htmlFor='Form'>Right ascension (hours, minutes, seconds):</Label>
                 <br></br>
                 <input
                     className="name"
@@ -123,7 +132,7 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Declination (degrees, minutes, seconds):</label>
+                <Label htmlFor='Form'>Declination (degrees, minutes, seconds):</Label>
                 <br></br>
                 <input
                     className="name"
@@ -135,7 +144,7 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Apparent Magnitude:</label>
+                <Label htmlFor='Form'>Apparent Magnitude:</Label>
                 <br></br>
                 <input
                     className="name"
@@ -147,7 +156,7 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Age:</label>
+                <Label htmlFor='Form'>Age:</Label>
                 <br></br>
                 <input
                     className="name"
@@ -159,7 +168,7 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Mass (kg): </label>
+                <Label htmlFor='Form'>Mass (kg): </Label>
                 <br></br>
                 <input
                     className="name"
@@ -171,7 +180,7 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Radius (km):</label>
+                <Label htmlFor='Form'>Radius (km):</Label>
                 <br></br>
                 <input
                     className="name"
@@ -183,7 +192,7 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                 />
                 <br></br>
                 <br></br>
-                <label htmlFor='Form'>Distance from the Sun:</label>
+                <Label htmlFor='Form'>Distance from the Sun:</Label>
                 <br></br>
                 <input
                     className="name"
@@ -196,7 +205,7 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                 <br></br>
                 <input className="star_submit_button" type="submit" value="Submit"></input>
             </form>
-        </div>
+        </Card>
     )
 
     return (
@@ -205,6 +214,21 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
         </div>
     )
 }
+
+const Card = styled.div `
+margin-left:auto;
+margin-right:auto;
+background: rgba(0, 0, 0, 0.8);
+display:flex;
+flex-direction:column;
+justify-content:center;
+width:60%;
+padding-bottom:10vw;
+`
+
+const Label = styled.label`
+color:white;
+`;
 
 export default StarUpdate;
 
