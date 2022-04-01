@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styled from "styled-components";
 
-function Auth({ setUser, setIsAuthenticated }) {
+function Auth({ setUser, setIsAuthenticated, history }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -21,24 +21,24 @@ function Auth({ setUser, setIsAuthenticated }) {
         })
         .then(res => res.json())
         .then(json => {
-            console.log(json)
-            if(json.errors) setErrors(Object.entries(json.errors))
+          setUser(json)
+				  setIsAuthenticated(true)
+				  history.push('/')
         })
     }
 
     return (
       <Wrapper>
-          <h1>Sign up</h1>
+          <H1>Sign up</H1>
           <form onSubmit={onSubmit}>
-          <label>
+          <Label>
             Username
             <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-          </label>
-          <label>
+          </Label>
+          <Label>
             Password
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          </label>
-
+          </Label>
           <input type="submit" value="Sign up!" />
         </form>
         {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
@@ -55,6 +55,24 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0px;
+`;
+
+const H1 = styled.h1`
+color:white;
+`;
+
+const P = styled.p`
+color:white;
+`;
+
+const Label = styled.label`
+color:white;
+`;
+
+const Divider = styled.hr`
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin: 16px 0;
 `;
 
 export default Auth;

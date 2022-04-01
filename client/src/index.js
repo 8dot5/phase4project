@@ -31,7 +31,6 @@ const GlobalStyle = createGlobalStyle`
     background-attachment: fixed;
     background-repeat: no-repeat;
     opacity: 0.95;
-    color: white;
   }
 `;
 

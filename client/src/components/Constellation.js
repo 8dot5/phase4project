@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+
 
 function Constellation () {
     const [constellation, setConstellation] = useState({});
@@ -23,14 +25,14 @@ function Constellation () {
 
     let starList = (constellation.stars || []).map(star => {
         return (
-        <div className="star-details" key={star.name}>
-            <h3><b>{star.name}</b></h3>
+        <Card className="star-details" key={star.name}>
+            <H3><b>{star.name}</b></H3>
             <img src={star.image_url ? star.image_url : 'https://upload.wikimedia.org/wikipedia/commons/5/57/Betelgeuse_captured_by_ALMA.jpg'}
             height="300"
             width="300">
             </img>
             <br></br>
-            <ul><em>Apparent Magnitude:</em> {star.apparent_magnitude}</ul>
+            <Ul><em>Apparent Magnitude:</em> {star.apparent_magnitude}</Ul>
             {/* TODO: edit button should only render if user is authenticated */}
             <button onClick={(e) => {
                 e.preventDefault();
@@ -45,25 +47,25 @@ function Constellation () {
                 }}>
                     Delete star
             </button>
-        </div>
+        </Card>
 
         )
     })
     return (
-        <div className="constellation-details">
+        <Card className="constellation-details">
 
-            <h1>{constellation.name}</h1>
-            <img alt="constellation_image" src={constellation.image_url}/>
-            <ul>Meaning: <em>{constellation.meaning}</em></ul>
-            <ul>Origin: {constellation.origin}</ul>
-            <ul>Abbreviation: <em>{constellation.abbreviation}</em></ul>
-            <ul>Right Ascension (hours & minutes): {constellation.right_ascension_hrs_mins}</ul>
-            <ul>Declination (degrees & minutes): {constellation.declination_degs_mins}</ul>
-            <ul>Area (in square degrees): {constellation.area_sq_deg}</ul>
-            <ul>Percentage of Sky Area: {constellation.percentage_of_sky_area}</ul>
-            <ul>Quadrant: {constellation.quadrant}</ul>
-            <ul>Number of primary stars: {constellation.main_stars}</ul>
-            <h2>Stars:</h2>
+            <H1>{constellation.name}</H1>
+            <Img alt="constellation_image" src={constellation.image_url}/>
+            <Ul>Meaning: <em>{constellation.meaning}</em></Ul>
+            <Ul>Origin: {constellation.origin}</Ul>
+            <Ul>Abbreviation: <em>{constellation.abbreviation}</em></Ul>
+            <Ul>Right Ascension (hours & minutes): {constellation.right_ascension_hrs_mins}</Ul>
+            <Ul>Declination (degrees & minutes): {constellation.declination_degs_mins}</Ul>
+            <Ul>Area (in square degrees): {constellation.area_sq_deg}</Ul>
+            <Ul>Percentage of Sky Area: {constellation.percentage_of_sky_area}</Ul>
+            <Ul>Quadrant: {constellation.quadrant}</Ul>
+            <Ul>Number of primary stars: {constellation.main_stars}</Ul>
+            <H2>Stars:</H2>
             <button onClick={(e) => {
                 e.preventDefault();
                 window.location.href=`http://localhost:4000/constellations/${id}/stars`;
@@ -71,8 +73,78 @@ function Constellation () {
                     Add a star to {constellation.name}
             </button>
             {starList}
-        </div>
+        </Card>
     )
 }
+
+const Card = styled.div `
+margin-left:auto;
+margin-right:auto;
+background: rgba(0, 0, 0, 0.8);
+display:flex;
+flex-direction:column;
+justify-content:center;
+width:60%;
+padding-bottom:10vw;
+`
+
+const H1 = styled.h1`
+color:lightblue;
+font-style:oblique;
+text-transform:uppercase;
+font-family:Lucida;
+margin-left:auto;
+margin-right:auto;
+text-decoration:none;
+`
+
+const H3 = styled.h3`
+color:orange;
+font-style:oblique;
+text-transform:uppercase;
+font-family:Lucida;
+margin-left:auto;
+margin-right:auto;
+text-decoration:none;
+`
+
+const H2 = styled.h2`
+color:lightblue;
+font-style:oblique;
+text-transform:uppercase;
+font-family:Lucida;
+margin-left:auto;
+margin-right:auto;
+text-decoration:none;
+`
+
+const Ul = styled.ul`
+color:white;
+display:inline;
+font-family:Lucida;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+text-decoration:none;
+`
+const P2 = styled.p`
+color:white;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+text-decoration:none;
+`
+const A2 = styled.a`
+color:white;
+text-decoration:none;
+`
+const Img = styled.img`
+position:flex;
+display:flex;
+margin-left:auto;
+margin-right:auto;
+
+`
+
 
 export default Constellation;
