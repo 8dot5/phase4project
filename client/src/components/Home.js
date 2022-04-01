@@ -19,8 +19,9 @@ function Home({ user, constellations, setConstellations }) {
 			<Card key={constellation.id} className="card">
 				<H2><A href={`/constellations/${constellation.id}`}>{constellation.name}</A></H2>
 				<P><em>occupying {constellation.percentage_of_sky_area}% of the visible sky<br/>in celestial quadrant {constellation.quadrant}</em></P>
-
+				<a href={`/constellations/${constellation.id}`}>
 				<Img alt="constellation_image" src={constellation.image_url}></Img>
+				</a>
 			</Card>
 		)).sort(function(c1,c2) {
 			return c1.key - c2.key
