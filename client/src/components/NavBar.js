@@ -54,8 +54,8 @@ const ButtonBase = styled.button`
   color: white;
   &:hover,
   &:focus {
-    background: green;
-    color: white;
+    background: white;
+    color: black;
   }
   &:active {
     color: black;
