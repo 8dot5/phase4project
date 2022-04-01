@@ -44,14 +44,16 @@ function Constellation () {
             <Button onClick={(e) => {
                 e.preventDefault();
                 handleDelete(star.id);
-                alert("Deleted!");
                 }}>
                     Delete star
             </Button>
         </Card>
 
         )
+    }).sort(function(c1,c2) {
+        return c1.key - c2.key
     })
+
     return (
         <Card className="constellation-details">
             <H1>{constellation.name}</H1>

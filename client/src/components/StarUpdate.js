@@ -99,7 +99,14 @@ function StarUpdate( {constellations, handleStarUpdate, history}) {
                     onChange={e => setName(e.target.value)}
                 />
                 <br></br>
-
+                <br></br>
+                <Label htmlFor='Form'>Brightest star?</Label>
+                <br></br>
+                <select onChange={e => setBrightstar(e.target.value)}>
+                    <option value="false">NOT TRUE</option>
+                    <option value="true">TRUE</option>
+                </select>
+                <br></br>
                 <br></br>
                 <Label htmlFor='Form'>Image:</Label>
                 <br></br>

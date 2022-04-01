@@ -26,13 +26,6 @@ function Home({ user, constellations, setConstellations }) {
 			return c1.key - c2.key
 		})
 
-
-	// return (
-	// 	<div className="cards">
-    //  		 {user ? itemsToDisplay : <p>Loading...</p> }
-    // 	</div>
-
-	// )
 	return (
         <div className="cards">
              {user ? itemsToDisplay :
