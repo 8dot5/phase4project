@@ -27,6 +27,7 @@ function Constellation () {
         return (
         <Card className="star-details" key={star.name}>
             <H3><b>{star.name}</b></H3>
+            {star.bright_star ? <H4>*{constellation.name}'s brightest star*</H4> : null }
             <Img src={star.image_url ? star.image_url : 'https://upload.wikimedia.org/wikipedia/commons/5/57/Betelgeuse_captured_by_ALMA.jpg'}
             height="300"
             width="300">
@@ -55,7 +56,7 @@ function Constellation () {
         <Card className="constellation-details">
             <H1>{constellation.name}</H1>
             <Img alt="constellation_image" src={constellation.image_url}/>
-            <Ul><b>Meaning:</b> {constellation.meaning}</Ul>
+            <Ul><b>Meaning:</b> "{constellation.meaning}"</Ul>
             <Ul><b>Origin:</b> {constellation.origin}</Ul>
             <Ul><b>Abbreviation:</b> {constellation.abbreviation}</Ul>
             <Ul><b>Right Ascension (hours & minutes):</b> {constellation.right_ascension_hrs_mins}</Ul>
@@ -99,11 +100,21 @@ text-decoration:none;
 
 const H3 = styled.h3`
 color:orange;
-font-style:oblique;
+// font-style:oblique;
 text-transform:uppercase;
 font-family:Lucida;
 margin-left:auto;
 margin-right:auto;
+text-decoration:none;
+`
+
+const H4 = styled.h4`
+color:orange;
+font-style:oblique;
+font-family:Lucida;
+margin-left:auto;
+margin-right:auto;
+margin-top:-10px;
 text-decoration:none;
 `
 

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+
 
 
 function StarCreate( {history}) {
@@ -89,9 +91,9 @@ function StarCreate( {history}) {
 
     // let constellation = constellations.find(c => c.id == id)
     let form = (
-        <div className='form-container'>
+        <Card className='form-container'>
             <form className="star-form">
-                <label>Add a star to the constellation {constellation.name}</label>
+                <Label>Add a star to the constellation {constellation.name}</Label>
                 <br></br>
                     {/* <select name="constellations" className="constellations-dropdown" value={constellationId} onChange={(e) => setConstellationId(e.target.value)}>
                        {dropdownItems}
@@ -100,7 +102,7 @@ function StarCreate( {history}) {
 
             </form>
             <form className='form' onSubmit={handleSubmit}>
-                <label htmlFor='Form'>Star Name:</label>
+                <Label htmlFor='Form'>Star Name:</Label>
                 <br></br>
                 <input
                     className="name"
@@ -111,7 +113,7 @@ function StarCreate( {history}) {
                     onChange={e => setName(e.target.value)}
                 />
                 <br></br>
-                {/* <label htmlFor='Form'>Opened:</label>
+                {/* <Label htmlFor='Form'>Opened:</Label>
                 <br></br>
                 <input
                     className="name"
@@ -123,7 +125,7 @@ function StarCreate( {history}) {
                 /> */}
 
                 <br></br>
-                <label htmlFor='Form'>Image:</label>
+                <Label htmlFor='Form'>Image:</Label>
                 <br></br>
                 <input
                     className="name"
@@ -134,7 +136,7 @@ function StarCreate( {history}) {
                     onChange={e => setImageUrl(e.target.value)}
                 />
                 <br></br>
-                {/* <label htmlFor='Form'>Description:</label>
+                {/* <Label htmlFor='Form'>Description:</Label>
                 <br></br>
                 <input
                     className="name"
@@ -148,7 +150,7 @@ function StarCreate( {history}) {
                 <br></br>
                 <input className="button-35" type="submit"></input>
             </form>
-        </div>
+        </Card>
     )
 
     return (
@@ -157,6 +159,21 @@ function StarCreate( {history}) {
         </div>
     )
 }
+
+const Card = styled.div `
+margin-left:auto;
+margin-right:auto;
+background: rgba(0, 0, 0, 0.8);
+display:flex;
+flex-direction:column;
+justify-content:center;
+width:60%;
+padding-bottom:10vw;
+`
+
+const Label = styled.label`
+color:white;
+`;
 
 export default StarCreate;
 
